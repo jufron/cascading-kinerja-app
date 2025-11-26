@@ -17,7 +17,7 @@
             </div>
             <div class="card-body">
 
-                <a href="{{ route('daftar-admin.create') }}" class="btn btn-success my-3">Tambah Admin</a>
+                <a href="{{ route('pejabat-atasan.create') }}" class="btn btn-success my-3">Tambah Pejabat Atasan</a>
 
                 <div class="table-responsive">
                     <table
@@ -51,17 +51,18 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            {{-- @foreach ($user as $u)
+                            @foreach ($user as $u)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $u->name }}</td>
                                 <td>{{ $u->nip }}</td>
                                 <td>{{ $u->email }}</td>
+                                <td>{{ $u->biodata?->jabatan?->nama_jabatan ?? '-' }}</td>
                                 <td>{{ $u->updated_at }}</td>
                                 <td>{{ $u->created_at }}</td>
                                 <td>
                                     <form
-                                        id="banner-delete-form" action="{{ route('daftar-admin.destroy', $u) }}" method="post" class="d-flex">
+                                        id="banner-delete-form" action="{{ route('pejabat-atasan.destroy', $u) }}" method="post" class="d-flex">
                                         @method('delete')
                                         @csrf
                                         <button
@@ -70,7 +71,7 @@
                                             class="btn btn-info btn-circle btn-sm"
                                             data-toggle="modal"
                                             data-target="#faq"
-                                            data-url="{{ route('daftar-admin.show', $u) }}"
+                                            data-url="{{ route('pejabat-atasan.show', $u) }}"
                                             >
                                             <i class="fas fa-info-circle"></i>
                                         </button>
@@ -80,7 +81,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -160,7 +161,7 @@
                         return ress.json();
                     })
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         renderLoading(false);
                         renderHTML(data);
                     })
@@ -219,6 +220,66 @@
                                 </div>
                                 <div class="col-md-8">
                                     : ${data.email}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Nama Lengkap
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.nama_lengkap}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Jabatan
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.nama_jabatan}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Bidang
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.bidang}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Pangkat Golongan
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.pangkat_golongan}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Nomor Telepon
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.nomor_telepon}
                                 </div>
                             </div>
                         </li>

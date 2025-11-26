@@ -10,7 +10,7 @@ class Biodata extends Model
 {
     use DateFormatCreatedAtAndUpdatedAt;
 
-    protected $table = 'biodate';
+    protected $table = 'biodata';
 
     protected $fillable = [
         'user_id',

@@ -17,7 +17,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Tambah pejabat atasan</h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('daftar-admin.store') }}" method="POST">
+                <form action="{{ route('pejabat-atasan.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-4">
@@ -56,6 +56,51 @@
                                 name="password_confirmation"
                                 type="password"
                                 valueData="{{ old('password_confirmation') }}"
+                            />
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <x-dashboard.subComponents.input
+                                label="Nama Lengkap"
+                                name="nama_lengkap"
+                                valueData="{{ old('nama_lengkap') }}"
+                            />
+                        </div>
+                        <div class="col-md-4">
+                            <x-dashboard.subComponents.input-select name="jabatan_id" label="Jabatan">
+                                @foreach ($jabatan as $j)
+                                    {{-- <option value="{{ $j->id }}" {{ $user?->biodata?->jabatan_id == $j->id ? 'selected' : '' }}>
+                                        {{ $j->nama_jabatan }}
+                                    </option> --}}
+                                    <option value="{{ $j->id }}" {{ old('jabatan_id') == $j->id ? 'selected' : '' }}>
+                                        {{ $j->nama_jabatan }}
+                                    </option>
+                                @endforeach
+                            </x-dashboard.subComponents.input-select>
+                        </div>
+                        <div class="col-md-4">
+                            <x-dashboard.subComponents.input
+                                label="Bidang"
+                                name="bidang"
+                                valueData="{{ old('bidang') }}"
+                            />
+                        </div>
+                        <div class="col-md-4">
+                            <x-dashboard.subComponents.input
+                                label="Pangkat Golongan"
+                                name="pangkat_golongan"
+                                valueData="{{ old('pangkat_golongan') }}"
+                            />
+                        </div>
+                        <div class="col-md-4">
+                            <x-dashboard.subComponents.input
+                                label="Nomor Telepon"
+                                name="nomor_telepon"
+                                valueData="{{ old('nomor_telepon') }}"
                             />
                         </div>
                     </div>

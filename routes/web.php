@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
             ]);
     // ? pejabat atasan
     Route::resource('pejabat-atasan', PejabatAtasanController::class)
-            ->except([])
+            ->except(['edit', 'update'])
             ->parameters(['pejabat-atasan' => 'user'])
             ->names([
                 'index'         => 'pejabat-atasan.index',

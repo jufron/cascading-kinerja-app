@@ -28,6 +28,12 @@ class DaftarAdminRequest extends FormRequest
             'nip'       => ['required', 'numeric', 'max_digits:20', 'unique:'. User::class],
             'email'     => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password'  => ['required', 'confirmed', Password::defaults()],
+            // biodata
+            'nama_lengkap'          => ['required', 'string', 'max:255'],
+            'jabatan_id'            => ['required', 'integer', 'exists:jabatan,id'],
+            'bidang'                => ['required', 'string', 'max:255'],
+            'pangkat_golongan'      => ['required', 'string', 'max:255'],
+            'nomor_telepon'         => ['required', 'string', 'max:20'],
         ];
     }
 
@@ -46,7 +52,18 @@ class DaftarAdminRequest extends FormRequest
             'email.max'             => 'Email tidak boleh melebihi :max karakter.',
             'password.required'     => 'Kata sandi wajib diisi.',
             'password.confirmed'    => 'Konfirmasi kata sandi tidak cocok.',
-            'password.min'          => 'Kata sandi minimal harus :min karakter.'
+            'password.min'          => 'Kata sandi minimal harus :min karakter.',
+            // biodata
+            'nama_lengkap.string'       => 'Nama lengkap harus berupa teks.',
+            'nama_lengkap.max'          => 'Nama lengkap maksimal 255 karakter.',
+            'jabatan_id.integer'        => 'Jabatan tidak valid.',
+            'jabatan_id.exists'         => 'Jabatan tidak ditemukan.',
+            'bidang.string'             => 'Bidang harus berupa teks.',
+            'bidang.max'                => 'Bidang maksimal 255 karakter.',
+            'pangkat_golongan.string'   => 'Pangkat golongan harus berupa teks.',
+            'pangkat_golongan.max'      => 'Pangkat golongan maksimal 255 karakter.',
+            'nomor_telepon.string'      => 'Nomor telepon harus berupa teks.',
+            'nomor_telepon.max'         => 'Nomor telepon maksimal 20 karakter.',
         ];
     }
 }

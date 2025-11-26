@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\PejabatAtasanRequest;
+use App\Models\Jabatan;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\Eloquent\Builder;
 
 class PejabatAtasanController extends Controller
 {
@@ -18,7 +20,14 @@ class PejabatAtasanController extends Controller
     public function index() : View
     {
         return view('dashboard.admin.pejabat-atasan.daftar-pejabat-atasan', [
-            'user'  => User::query()->role('pimpinan')->latest()->get()
+            'user'  => User::with([
+                'biodata'           => function ($query) {
+                    $query->select('user_id', 'jabatan_id', 'nomor_telepon');
+                },
+                'biodata.jabatan'   => function ($query) {
+                    $query->select('id', 'nama_jabatan');
+                }
+            ])->role('pimpinan')->latest()->get()
         ]);
     }
 
@@ -27,7 +36,9 @@ class PejabatAtasanController extends Controller
      */
     public function create() : View
     {
-        return view('dashboard.admin.pejabat-atasan.create');
+        return view('dashboard.admin.pejabat-atasan.create', [
+            'jabatan'       => Jabatan::query()->latest()->get()
+        ]);
     }
 
     /**
@@ -42,7 +53,7 @@ class PejabatAtasanController extends Controller
             'password'  => Hash::make($request->password)
         ]);
 
-        $user->biodata()->crate([
+        $user->biodata()->create([
             'nama_lengkap'          => $request->nama_lengkap,
             'jabatan_id'            => $request->jabatan_id,
             'bidang'                => $request->bidang,
@@ -61,7 +72,28 @@ class PejabatAtasanController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $user->load([
+            'biodata',
+            'biodata.jabatan'
+        ]);
+
+        if (!$user) {
+            return response()->json(null, 404);
+        }
+
+        return response()->json([
+            'username'              => $user->name,
+            'nip'                   => $user->nip,
+            'email'                 => $user->email,
+            // biodata
+            'nama_lengkap'          => $user->biodata->nama_lengkap ?? '-',
+            'nama_jabatan'          => $user->biodata->jabatan->nama_jabatan ?? '-',
+            'bidang'                => $user->biodata->bidang ?? '-',
+            'pangkat_golongan'      => $user->biodata->pangkat_golongan ?? '-',
+            'nomor_telepon'         => $user->biodata->nomor_telepon ?? '-',
+            'created_at'            => $user->created_at,
+            'updated_at'            => $user->updated_at
+        ], 200);
     }
 
     /**
@@ -69,7 +101,13 @@ class PejabatAtasanController extends Controller
      */
     public function edit(User $user)
     {
-        return view('dashboard.admin.pejabat-atasan.create');
+        $user->load([
+            'biodata',
+            'biodata.jabatan'
+        ]);
+        return view('dashboard.admin.pejabat-atasan.create', [
+            'user'  => $user
+        ]);
     }
 
     /**
@@ -77,7 +115,28 @@ class PejabatAtasanController extends Controller
      */
     public function update(PejabatAtasanRequest $request, User $user)
     {
-        //
+        $user->load([
+            'biodata',
+            'biodata.jabatan'
+        ]);
+
+        $user->update([
+            'name'      => $request->name,
+            'nip'       => $request->nip,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password)
+        ]);
+
+        $user->biodata()->update([
+            'nama_lengkap'          => $request->nama_lengkap,
+            'jabatan_id'            => $request->jabatan_id,
+            'bidang'                => $request->bidang,
+            'pangkat_golongan'      => $request->pangkat_golongan,
+            'nomor_telepon'         => $request->nomor_telepon
+        ]);
+
+        alert('Berhasil','Berhasil Memperbaharui Data', 'success');
+        return redirect()->route('pejabat-atasan.index');
     }
 
     /**
@@ -85,6 +144,19 @@ class PejabatAtasanController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->load([
+            'biodata',
+            'biodata.jabatan'
+        ]);
+
+        if ($user->name === auth()->user()->name) {
+            alert()->error('Gagal','Tidak bisa menghapus akun yang sedang aktif');
+        } else {
+            $user->removeRole('pimpinan');
+            $user->biodata()->delete();
+            $user->delete();
+            alert('Berhasil','Berhasil Menghapus Data', 'success');
+        }
+        return redirect()->route('pejabat-atasan.index');
     }
 }
