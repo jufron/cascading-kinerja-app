@@ -8,6 +8,7 @@ use App\Date\DateFormatCreatedAtAndUpdatedAt;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -54,5 +55,15 @@ class User extends Authenticatable
     public function biodata () : HasOne
     {
         return $this->hasOne(Biodata::class);
+    }
+
+    public function dokumenKinerjaPihakPertama () : HasMany
+    {
+        return $this->hasMany(DokumentKinerja::class, 'user_id_pihak_pertama');
+    }
+
+    public function dokumenKinerjaPihakKedua () : HasMany
+    {
+        return $this->hasMany(DokumentKinerja::class, 'user_id_pihak_kedua');
     }
 }

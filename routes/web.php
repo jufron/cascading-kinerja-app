@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\DokumenKinerjaController;
+use App\Http\Controllers\Dashboard\KinerjaController;
 use App\Http\Controllers\Dashboard\PejabatAtasanController;
+use App\Http\Controllers\Dashboard\PelaksanaanAnggaranController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +49,50 @@ Route::middleware('auth')->group(function () {
                 'update'        => 'pejabat-atasan.update',
                 'destroy'       => 'pejabat-atasan.destroy',
             ]);
+    // ? dokumen kinerja
+    Route::get('dokument-kinerja/search', [DokumenKinerjaController::class, 'search'])->name('dokument-kinerja.search');
+    Route::resource('dokument-kinerja', DokumenKinerjaController::class)
+            ->except([])
+            ->parameters(['dokument-kinerja'    => 'dokumentKinerja'])
+            ->names([
+                'index'         => 'dokument-kinerja.index',
+                'create'        => 'dokument-kinerja.create',
+                'store'         => 'dokument-kinerja.store',
+                'show'          => 'dokument-kinerja.show',
+                'edit'          => 'dokument-kinerja.edit',
+                'update'        => 'dokument-kinerja.update',
+                'destroy'       => 'dokument-kinerja.destroy',
+            ]);
+    Route::get('dokumen-kinerja/{dokumentKinerja}/kinerja', [DokumenKinerjaController::class, 'kinerja'])
+            ->name('dokument-kinerja-kinerja.index');
+    
+    // ? kinerja 
+    Route::resource('kinerja', KinerjaController::class)
+            ->except([])
+            ->parameters([])
+            ->names([
+                'index'         => 'kinerja.index',
+                'create'        => 'kinerja.create',
+                'store'         => 'kinerja.store',
+                'show'          => 'kinerja.show',
+                'edit'          => 'kinerja.edit',
+                'update'        => 'kinerja.update',
+                'destroy'       => 'kinerja.destroy',
+            ]);
+    // ? kinerja & pelaksanaan anggaran
+    Route::resource('pelaksanaan-anggaran', PelaksanaanAnggaranController::class)
+            ->except([])
+            ->parameters([])
+            ->names([
+                'index'         => 'pelaksanaan-anggaran.index',
+                'create'        => 'pelaksanaan-anggaran.create',
+                'store'         => 'pelaksanaan-anggaran.store',
+                'show'          => 'pelaksanaan-anggaran.show',
+                'edit'          => 'pelaksanaan-anggaran.edit',
+                'update'        => 'pelaksanaan-anggaran.update',
+                'destroy'       => 'pelaksanaan-anggaran.destroy',
+            ]);
+
 
     //* pimpinan
 

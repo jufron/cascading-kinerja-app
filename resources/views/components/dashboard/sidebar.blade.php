@@ -35,10 +35,10 @@
         </a>
     </li>
 
-    <li class="nav-item @if (request()->routeIs('dashboard')) active @endif">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+    <li class="nav-item @if (request()->routeIs('dokument-kinerja.*')) active @endif">
+        <a class="nav-link" href="{{ route('dokument-kinerja.index') }}">
             <i class="fas fa-chart-line"></i>
-            <span>Daftar Kinerja</span>
+            <span>Dokumen Kinerja</span>
         </a>
     </li>
 

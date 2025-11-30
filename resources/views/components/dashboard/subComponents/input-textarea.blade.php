@@ -1,17 +1,15 @@
 <div class="form-group">
     <label for="{{ $name }}">{{ $label }}</label>
-    <input
+    <textarea
         class="form-control @error($name) is-invalid @enderror"
-        type="{{ $type ?? 'text' }}"
-        name="{{ $name }}"
         id="{{ $name }}"
-        @if (isset($disable) && $disable === 'true')
-        disabled            
-        @endif
-        @isset($valueData)
-            value="{{ $valueData }}"
+        name="{{ $name }}"
+        rows="5"
+        spellcheck="false"
+        @isset($placeholder)
+        placeholder="{{ $placeholder }}"
         @endisset
-    />
+    >@isset($slot){{ $slot }}@endisset</textarea>
     @error($name)
         <div class="invalid-feedback">
             {{ $message }}
