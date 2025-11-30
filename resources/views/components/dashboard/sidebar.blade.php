@@ -35,7 +35,7 @@
         </a>
     </li>
 
-    <li class="nav-item @if (request()->routeIs('dokument-kinerja.*')) active @endif">
+    <li class="nav-item @if (request()->routeIs('dokument-kinerja.*') || request()->routeIs('kinerja.*')) active @endif">
         <a class="nav-link" href="{{ route('dokument-kinerja.index') }}">
             <i class="fas fa-chart-line"></i>
             <span>Dokumen Kinerja</span>

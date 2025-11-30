@@ -62,14 +62,14 @@ Route::middleware('auth')->group(function () {
                 'edit'          => 'dokument-kinerja.edit',
                 'update'        => 'dokument-kinerja.update',
                 'destroy'       => 'dokument-kinerja.destroy',
-            ]);
-    Route::get('dokumen-kinerja/{dokumentKinerja}/kinerja', [DokumenKinerjaController::class, 'kinerja'])
-            ->name('dokument-kinerja-kinerja.index');
-    
-    // ? kinerja 
-    Route::resource('kinerja', KinerjaController::class)
+            ]);;
+    // ? kinerja
+    Route::resource('dokument-kinerja.kinerja', KinerjaController::class)
             ->except([])
-            ->parameters([])
+            ->parameters([
+                'dokument-kinerja'    => 'dokumentKinerja',
+                'kinerja'             => 'kinerja'
+            ])
             ->names([
                 'index'         => 'kinerja.index',
                 'create'        => 'kinerja.create',

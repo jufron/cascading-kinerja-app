@@ -66,7 +66,7 @@
                                         <a href="#" class="btn btn-primary btn-circle btn-sm">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
-                                        <a href="{{ route('dokument-kinerja-kinerja.index', $dk) }}" class="btn btn-success btn-circle btn-sm">
+                                        <a href="{{ route('kinerja.index', $dk) }}" class="btn btn-success btn-circle btn-sm">
                                             <i class="fas fa-check"></i>
                                         </a>
                                         <button

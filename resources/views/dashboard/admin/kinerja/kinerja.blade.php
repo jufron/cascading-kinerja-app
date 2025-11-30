@@ -77,7 +77,7 @@
                     </li>
                 </ul>
 
-                <a href="{{ route('kinerja.create') }}" class="btn btn-success my-3">Tambah Kinerja</a>
+                <a href="{{ route('kinerja.create', $dokumentKinerja) }}" class="btn btn-success my-3">Tambah Kinerja</a>
                 <div class="table-responsive">
                     <table
                         class="table table-bordered"
@@ -88,7 +88,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi	</th>
+                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi</th>
                                 <th>Sasaran Strategis Individu / Rencana Hasil Kerja Individu</th>
                                 <th>Indikator Kinerja Individu</th>
                                 <th>Target / Satuan</th>
@@ -110,17 +110,18 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            {{-- @foreach ($user as $u)
+                            @foreach ($kinerja as $kj)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $u->name }}</td>
-                                <td>{{ $u->nip }}</td>
-                                <td>{{ $u->email }}</td>
-                                <td>{{ $u->updated_at }}</td>
-                                <td>{{ $u->created_at }}</td>
+                                <td>{{ $kj->sasaran_strategis }}</td>
+                                <td>{{ $kj->sasaran_strategis_individu }}</td>
+                                <td>{{ $kj->indikator_kinerja_individu }}</td>
+                                <td>{{ $kj->target }}</td>
+                                <td>{{ $kj->updated_at }}</td>
+                                <td>{{ $kj->created_at }}</td>
                                 <td>
                                     <form
-                                        id="banner-delete-form" action="{{ route('daftar-admin.destroy', $u) }}" method="post" class="d-flex">
+                                        id="banner-delete-form" action="{{ route('kinerja.destroy', [$dokumentKinerja, $kj]) }}" method="post" class="d-flex">
                                         @method('delete')
                                         @csrf
                                         <button
@@ -129,17 +130,20 @@
                                             class="btn btn-info btn-circle btn-sm"
                                             data-toggle="modal"
                                             data-target="#faq"
-                                            data-url="{{ route('daftar-admin.show', $u) }}"
+                                            data-url="{{ route('kinerja.show', [$dokumentKinerja, $kj]) }}"
                                             >
                                             <i class="fas fa-info-circle"></i>
                                         </button>
+                                        <a href="{{ route('kinerja.edit', [$dokumentKinerja, $kj]) }}" class="btn btn-warning btn-circle btn-sm">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </a>
                                         <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -190,8 +194,6 @@
                 </div>
             </div>
         </div>
-
-
 
         {{-- ? Modal info  --}}
         <div class="modal fade" id="faq" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="faqLabel" aria-hidden="true">
