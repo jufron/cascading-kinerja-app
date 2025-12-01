@@ -100,7 +100,7 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi	</th>
+                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi</th>
                                 <th>Sasaran Strategis Individu / Rencana Hasil Kerja Individu</th>
                                 <th>Indikator Kinerja Individu</th>
                                 <th>Target / Satuan</th>
@@ -197,7 +197,7 @@
 
         {{-- ? Modal info  --}}
         <div class="modal fade" id="faq" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="faqLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="faqLabel">Pertanyaan Faq Info</h5>
@@ -299,10 +299,10 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-4 font-weight-bold">
-                                    Username
+                                    Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi
                                 </div>
                                 <div class="col-md-8">
-                                    : ${data.username}
+                                    : ${data.sasaran_strategis}
                                 </div>
                             </div>
                         </li>
@@ -311,10 +311,10 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-4 font-weight-bold">
-                                    NIP
+                                    Sasaran Strategis Individu / Rencana Hasil Kerja Individu
                                 </div>
                                 <div class="col-md-8">
-                                    : ${data.nip}
+                                    : ${data.sasaran_strategis_individu}
                                 </div>
                             </div>
                         </li>
@@ -323,10 +323,10 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-4 font-weight-bold">
-                                    Email
+                                    Indikator Kinerja Individu
                                 </div>
                                 <div class="col-md-8">
-                                    : ${data.email}
+                                    : ${data.indikator_kinerja_individu}
                                 </div>
                             </div>
                         </li>
@@ -335,58 +335,10 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-4 font-weight-bold">
-                                    Nama Lengkap
+                                    Target / Satuan
                                 </div>
                                 <div class="col-md-8">
-                                    : ${data.nama_lengkap}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Jabatan
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.nama_jabatan}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Bidang
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.bidang}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Pangkat Golongan
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.pangkat_golongan}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Nomor Telepon
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.nomor_telepon}
+                                    : ${data.target}
                                 </div>
                             </div>
                         </li>

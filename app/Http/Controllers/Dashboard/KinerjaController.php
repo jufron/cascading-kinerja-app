@@ -36,7 +36,7 @@ class KinerjaController extends Controller
             },
         ])->latest()->get();
 
-        $kinerja = Kinerja::with(['dokumentKinerja:id'])->latest()->get();
+        $kinerja = Kinerja::with(['dokumentKinerja:id'])->where('dokument_kinerja_id', $dokumentKinerja->id)->latest()->get();
         return view('dashboard.admin.kinerja.kinerja', [
             'dokumentKinerja'       => $dokumentKinerja,
             'kinerja'               => $kinerja
@@ -96,7 +96,6 @@ class KinerjaController extends Controller
             'dokument_kinerja_id'               => $dokumentKinerja,
             'sasaran_strategis'                 => $kinerja->sasaran_strategis,
             'sasaran_strategis_individu'        => $kinerja->sasaran_strategis_individu,
-            'indikator_kinerja_individu'        => $kinerja->indikator_kinerja_individu,
             'target'                            => $kinerja->target,
             'created_at'                        => $kinerja->created_at,
             'updated_at'                        => $kinerja->updated_at

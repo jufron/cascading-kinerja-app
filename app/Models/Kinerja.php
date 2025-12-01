@@ -22,6 +22,6 @@ class Kinerja extends Model
 
     public function dokumentKinerja () : BelongsTo
     {
-        return $this->belongsTo(Kinerja::class);
+        return $this->belongsTo(DokumentKinerja::class);
     }
 }

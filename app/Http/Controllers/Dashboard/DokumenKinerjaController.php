@@ -129,36 +129,6 @@ class DokumenKinerjaController extends Controller
         return redirect()->route('dokument-kinerja.index');
     }
 
-    public function kinerja (DokumentKinerja $dokumentKinerja) : View
-    {
-        $dokumentKinerja->load([
-            'userPertama' => function ($query) {
-                $query->select(['id', 'nip']);
-            },
-            'userPertama.biodata' => function ($query) {
-                $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
-            },
-            'userPertama.biodata.jabatan' => function ($query) {
-                $query->select(['id', 'nama_jabatan']);
-            },
-            'userKedua' => function ($query) {
-                $query->select(['id', 'nip']);
-            },
-            'userKedua.biodata' => function ($query) {
-                $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
-            },
-            'userKedua.biodata.jabatan' => function ($query) {
-                $query->select(['id', 'nama_jabatan']);
-            },
-        ])->latest()->get();
-
-        $kinerja = Kinerja::with(['dokumentKinerja:id'])->latest()->get();
-        return view('dashboard.admin.kinerja.kinerja', [
-            'dokumentKinerja'       => $dokumentKinerja,
-            'kinerja'               => $kinerja
-        ]);
-    }
-
     public function show (DokumentKinerja $dokumentKinerja)
     {
 

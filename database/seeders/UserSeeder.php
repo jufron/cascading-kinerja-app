@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Biodata;
+use App\Models\Jabatan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -45,5 +47,30 @@ class UserSeeder extends Seeder
 
         $userPimpinan = User::query()->whereName('kosmas')->get()->first();
         $userPimpinan->assignRole('pimpinan');
+
+        Biodata::create([
+            'user_id'               => $userToAdmin->id,
+            'nama_lengkap'          => 'Yanuarius F. Lagut , S.Par',
+            'jabatan_id'            => Jabatan::latest()->get()->first(),
+            'bidang'                => 'testing testing testing',
+            'pangkat_golongan'      => 'testing testing testing testing',
+            'nomor_telepon'         => '0821234567890'
+        ]);
+        Biodata::create([
+            'user_id'               => $userPegawai->id,
+            'nama_lengkap'          => 'Noldy Hosea Pellokila, S. Sos., M.M',
+            'jabatan_id'            => Jabatan::latest()->get()->first(),
+            'bidang'                => 'testing testing testing',
+            'pangkat_golongan'      => 'testing testing testing testing',
+            'nomor_telepon'         => '0821234567890'
+        ]);
+        Biodata::create([
+            'user_id'               => $userPimpinan->id,
+            'nama_lengkap'          => 'kosmas asd',
+            'jabatan_id'            => Jabatan::latest()->get()->first(),
+            'bidang'                => 'testing testing testing',
+            'pangkat_golongan'      => 'testing testing testing testing',
+            'nomor_telepon'         => '0821234567890'
+        ]);
     }
 }
