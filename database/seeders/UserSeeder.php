@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
         Biodata::create([
             'user_id'               => $userToAdmin->id,
             'nama_lengkap'          => 'Yanuarius F. Lagut , S.Par',
-            'jabatan_id'            => Jabatan::latest()->get()->first(),
+            'jabatan_id'            => Jabatan::latest()->get()->first()->id,
             'bidang'                => 'testing testing testing',
             'pangkat_golongan'      => 'testing testing testing testing',
             'nomor_telepon'         => '0821234567890'
@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
         Biodata::create([
             'user_id'               => $userPegawai->id,
             'nama_lengkap'          => 'Noldy Hosea Pellokila, S. Sos., M.M',
-            'jabatan_id'            => Jabatan::latest()->get()->first(),
+            'jabatan_id'            => Jabatan::latest()->get()->first()->id,
             'bidang'                => 'testing testing testing',
             'pangkat_golongan'      => 'testing testing testing testing',
             'nomor_telepon'         => '0821234567890'
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
         Biodata::create([
             'user_id'               => $userPimpinan->id,
             'nama_lengkap'          => 'kosmas asd',
-            'jabatan_id'            => Jabatan::latest()->get()->first(),
+            'jabatan_id'            => Jabatan::latest()->get()->first()->id,
             'bidang'                => 'testing testing testing',
             'pangkat_golongan'      => 'testing testing testing testing',
             'nomor_telepon'         => '0821234567890'

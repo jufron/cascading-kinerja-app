@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(DokumentKinerja::class, 'user_id_pihak_kedua');
     }
+
+    public function laporanPegawai () : HasMany
+    {
+        return $this->hasMany(LaporanPegawai::class);
+    }
+
+    public function laporanPegawaiUser () : HasMany
+    {
+        return $this->hasMany(LaporanPegawai::class, 'pegawai_user_id');
+    }
 }

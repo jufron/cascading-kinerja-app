@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pelaksanaan_anggaran', function (Blueprint $table) {
+        Schema::create('laporan_pegawai', function (Blueprint $table) {
             $table->id();
-            //  sasaran strategis
-            $table->unsignedBigInteger('kinerja_id');
-            $table->foreign('kinerja_id')->references('id')->on('kinerja')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->string('program_kegiatan');
-            $table->string('jumlah_anggaran');
-            $table->string('target_kegiatan');
+            $table->unsignedBigInteger('pegawai_user_id');
+            $table->foreign('pegawai_user_id')->references('id')->on('users')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->string('nama_file');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pelaksanaan_anggaran');
+        Schema::dropIfExists('laporan_pegawai');
     }
 };

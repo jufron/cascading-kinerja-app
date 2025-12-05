@@ -14,7 +14,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                    Admin</div>
+                                    User</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ 'user' }}</div>
                             </div>
                             <div class="col-auto">
@@ -32,7 +32,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Pejabat Atasan</div>
+                                    Daftar Berita</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ 'berita' }}</div>
                             </div>
                             <div class="col-auto">
@@ -50,7 +50,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Dokumen Kinerja</div>
+                                    Kategory</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ 'kategory' }}</div>
                             </div>
                             <div class="col-auto">
@@ -68,7 +68,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Catatan</div>
+                                    Kontak Masuk</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">111</div>
                             </div>
                             <div class="col-auto">

@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DokumenKinerjaController;
 use App\Http\Controllers\Dashboard\KinerjaController;
+use App\Http\Controllers\Dashboard\LaporanPegawaiController;
 use App\Http\Controllers\Dashboard\PejabatAtasanController;
 use App\Http\Controllers\Dashboard\PelaksanaanAnggaranController;
 use App\Http\Controllers\ProfileController;
@@ -20,7 +21,7 @@ Route::middleware('auth')->group(function () {
 
     //* main
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('testing', [DashboardController::class, 'testView'])->name('test');
+    // Route::get('testing', [DashboardController::class, 'testView'])->name('test');
 
     //* admin
     // ? admin
@@ -80,9 +81,12 @@ Route::middleware('auth')->group(function () {
                 'destroy'       => 'kinerja.destroy',
             ]);
     // ? kinerja & pelaksanaan anggaran
-    Route::resource('pelaksanaan-anggaran', PelaksanaanAnggaranController::class)
+    Route::resource('dokument-kinerja.anggaran', PelaksanaanAnggaranController::class)
             ->except([])
-            ->parameters([])
+            ->parameters([
+                'dokument-kinerja'    => 'dokumentKinerja',
+                'anggaran'            => 'anggaran'
+            ])
             ->names([
                 'index'         => 'pelaksanaan-anggaran.index',
                 'create'        => 'pelaksanaan-anggaran.create',
@@ -93,9 +97,19 @@ Route::middleware('auth')->group(function () {
                 'destroy'       => 'pelaksanaan-anggaran.destroy',
             ]);
 
-
     //* pimpinan
-
+    Route::resource('laporan-pegawai', LaporanPegawaiController::class)
+            ->except(['show'])
+            ->parameters(['laporan-pegawai' => 'laporanPegawai'])
+            ->names([
+                'index'         => 'laporan-pegaai.index',
+                'create'        => 'laporan-pegaai.create',
+                'store'         => 'laporan-pegaai.store',
+                'show'          => 'laporan-pegaai.show',
+                'edit'          => 'laporan-pegaai.edit',
+                'update'        => 'laporan-pegaai.update',
+                'destroy'       => 'laporan-pegaai.destroy',
+            ]);
 
     //* pegawai
 });

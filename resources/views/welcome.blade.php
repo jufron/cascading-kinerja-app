@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DcOrQ2qn.css') }}">
+    <script src="{{ asset('build/assets/app-kGY04szw.js') }}"></script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;

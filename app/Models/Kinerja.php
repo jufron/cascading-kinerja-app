@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Date\DateFormatCreatedAtAndUpdatedAt;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kinerja extends Model
 {
@@ -23,5 +24,10 @@ class Kinerja extends Model
     public function dokumentKinerja () : BelongsTo
     {
         return $this->belongsTo(DokumentKinerja::class);
+    }
+
+    public function pelaksanaanAnggaran () : HasMany
+    {
+        return $this->hasMany(PelaksanaanAnggaran::class);
     }
 }
