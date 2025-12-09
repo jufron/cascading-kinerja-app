@@ -63,7 +63,7 @@ Route::middleware('auth')->group(function () {
                 'edit'          => 'dokument-kinerja.edit',
                 'update'        => 'dokument-kinerja.update',
                 'destroy'       => 'dokument-kinerja.destroy',
-            ]);;
+            ]);
     // ? kinerja
     Route::resource('dokument-kinerja.kinerja', KinerjaController::class)
             ->except([])
@@ -98,6 +98,8 @@ Route::middleware('auth')->group(function () {
             ]);
 
     //* pimpinan
+    Route::get('laporan-pegawai/download{laporanPegawai}', [LaporanPegawaiController::class, 'download'])
+            ->name('laporan-pegawai.download');
     Route::resource('laporan-pegawai', LaporanPegawaiController::class)
             ->except(['show'])
             ->parameters(['laporan-pegawai' => 'laporanPegawai'])

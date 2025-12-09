@@ -1,4 +1,4 @@
-<x-dashboard.layouts.base-dashboard title="create admin">
+<x-dashboard.layouts.base-dashboard title="create laporan pegawai">
     {{-- todo css --}}
     <x-slot:hadeOptional>
 
@@ -8,101 +8,35 @@
     <x-slot:content>
         {{-- ? Page Heading --}}
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Tambah Admin</h1>
+            <h1 class="h3 mb-0 text-gray-800">Tambah Laporan Pegawai</h1>
         </div>
 
         {{-- ? DataTales Example  --}}
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tambah Admin</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tambah Laporan</h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('daftar-admin.store') }}" method="POST">
+                <form action="{{ route('laporan-pegaai.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Username"
-                                name="name"
-                                valueData="{{ old('name') }}"
-                            />
-                        </div>
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="NIP"
-                                name="nip"
-                                valueData="{{ old('nip') }}"
-                            />
-                        </div>
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Email"
-                                name="email"
-                                type="email"
-                                valueData="{{ old('email') }}"
-                            />
-                        </div>
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Passowrd"
-                                name="password"
-                                type="password"
-                                valueData="{{ old('password') }}"
-                            />
-                        </div>
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Password Konfirmasi"
-                                name="password_confirmation"
-                                type="password"
-                                valueData="{{ old('password_confirmation') }}"
-                            />
+                    <div class="col-md-4 mb-4">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input @error('nama_file') is-invalid @enderror" name="nama_file" id="nama_file">
+                            <label class="custom-file-label" for="nama_file">Pilih file...</label>
+                            @error('nama_file')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Nama Lengkap"
-                                name="nama_lengkap"
-                                valueData="{{ old('nama_lengkap') }}"
-                            />
-                        </div>
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input-select name="jabatan_id" label="Jabatan">
-                                @foreach ($jabatan as $j)
-                                    {{-- <option value="{{ $j->id }}" {{ $user?->biodata?->jabatan_id == $j->id ? 'selected' : '' }}>
-                                        {{ $j->nama_jabatan }}
-                                    </option> --}}
-                                    <option value="{{ $j->id }}" {{ old('jabatan_id') == $j->id ? 'selected' : '' }}>
-                                        {{ $j->nama_jabatan }}
-                                    </option>
-                                @endforeach
-                            </x-dashboard.subComponents.input-select>
-                        </div>
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Bidang"
-                                name="bidang"
-                                valueData="{{ old('bidang') }}"
-                            />
-                        </div>
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Pangkat Golongan"
-                                name="pangkat_golongan"
-                                valueData="{{ old('pangkat_golongan') }}"
-                            />
-                        </div>
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Nomor Telepon"
-                                name="nomor_telepon"
-                                valueData="{{ old('nomor_telepon') }}"
-                            />
-                        </div>
+                    <div class="col-md-4">
+                        <x-dashboard.subComponents.input-select name="pegawai_user_id" label="Nama Pegawai">
+                            @foreach ($user as $u)
+                                <option selected disabled>Pilih</option>
+                                <option value="{{ $u->id }}" {{ old('pegawai_user_id') == $u->id ? 'selected' : '' }}>
+                                    {{ $u->biodata->nama_lengkap }}
+                                </option>
+                            @endforeach
+                        </x-dashboard.subComponents.input-select>
                     </div>
                     <button class="btn btn-success">Simpan</button>
                 </form>

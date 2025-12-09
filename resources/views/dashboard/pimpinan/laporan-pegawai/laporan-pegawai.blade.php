@@ -1,4 +1,4 @@
-<x-dashboard.layouts.base-dashboard title="daftar admin">
+<x-dashboard.layouts.base-dashboard title="laporan pegawai">
     <x-slot:hadeOptional>
         {{-- ? Custom styles for this page  --}}
         <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
@@ -7,17 +7,16 @@
     <x-slot:content>
         {{-- ? Page Heading --}}
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Daftar Admin</h1>
+            <h1 class="h3 mb-0 text-gray-800">Daftar Laporan Pegawai</h1>
         </div>
 
         {{-- ? DataTales Example  --}}
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Daftar Admin</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Daftar Laporan Pegawai</h6>
             </div>
             <div class="card-body">
-
-                <a href="{{ route('daftar-admin.create') }}" class="btn btn-success my-3">Tambah Admin</a>
+                <a href="{{ route('laporan-pegaai.create') }}" class="btn btn-success my-3">Tambah Laporan</a>
 
                 <div class="table-responsive">
                     <table
@@ -29,9 +28,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Username</th>
-                                <th>NIP</th>
-                                <th>Email</th>
+                                <th>Nama Pimpinan</th>
+                                <th>Nama Pegawai</th>
+                                <th>file</th>
                                 <th>tanggal Perubahan</th>
                                 <th>Tanggal Pembuatan</th>
                                 <th>Aksi</th>
@@ -40,38 +39,45 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Username</th>
-                                <th>NIP</th>
-                                <th>Email</th>
+                                <th>Nama Pimpinan</th>
+                                <th>Nama Pegawai</th>
+                                <th>file</th>
                                 <th>tanggal Perubahan</th>
                                 <th>Tanggal Pembuatan</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach ($user as $u)
+                            @foreach ($laporanPegawai as $lp)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $u->name }}</td>
-                                <td>{{ $u->nip }}</td>
-                                <td>{{ $u->email }}</td>
-                                <td>{{ $u->updated_at }}</td>
-                                <td>{{ $u->created_at }}</td>
+                                <td>{{ $lp->user->biodata->nama_lengkap }}</td>
+                                <td>{{ $lp->pegawaiUser->biodata->nama_lengkap }}</td>
+                                <td>
+                                    <a href="{{ route('laporan-pegawai.download', $lp) }}" class="btn btn-info btn-circle btn-sm">
+                                        <i class="fa-solid fa-download"></i>
+                                    </a>
+                                </td>
+                                <td>{{ $lp->updated_at }}</td>
+                                <td>{{ $lp->created_at }}</td>
                                 <td>
                                     <form
-                                        id="banner-delete-form" action="{{ route('daftar-admin.destroy', $u) }}" method="post" class="d-flex">
+                                        id="banner-delete-form" action="{{ route('laporan-pegaai.destroy', $lp) }}" method="post" class="d-flex">
                                         @method('delete')
                                         @csrf
-                                        <button
+                                        {{-- <button
                                             id="button-banner-info"
                                             type="button"
                                             class="btn btn-info btn-circle btn-sm"
                                             data-toggle="modal"
                                             data-target="#faq"
-                                            data-url="{{ route('daftar-admin.show', $u) }}"
+                                            data-url="{{ route('laporan-pegaai.show', $lp) }}"
                                             >
                                             <i class="fas fa-info-circle"></i>
-                                        </button>
+                                        </button> --}}
+                                        <a href="{{ route('laporan-pegaai.edit', $lp) }}" class="btn btn-warning btn-circle btn-sm">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </a>
                                         <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">
                                             <i class="fas fa-trash"></i>
                                         </button>

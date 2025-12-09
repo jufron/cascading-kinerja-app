@@ -22,8 +22,21 @@ class LaporanPegawaiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pegawai_user_id'       => [],
-            'nama_file'             => []
+            'pegawai_user_id'       => ['required', 'integer', 'exists:users,id'],
+            'nama_file'             => [$this->isMethod('patch') || $this->isMethod('put')
+                                        ? 'nullable'
+                                        : 'required',
+                                         'file', 'mimetypes:application/pdf', 'max:2048']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nama_file.required' => 'Silakan unggah file terlebih dahulu.',
+            'nama_file.file'     => 'Format tidak valid, data yang dikirim harus berupa file.',
+            'nama_file.mimes'    => 'Format file tidak valid. Hanya file PDF yang diperbolehkan.',
+            'nama_file.max'      => 'Ukuran file terlalu besar. Maksimal 2 MB.',
         ];
     }
 }
