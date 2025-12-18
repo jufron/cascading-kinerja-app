@@ -42,8 +42,8 @@
         </a>
     </li>
 
-    <li class="nav-item @if (request()->routeIs('dashboard')) active @endif">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+    <li class="nav-item @if (request()->routeIs('catatan.*')) active @endif">
+        <a class="nav-link" href="{{ route('catatan.index') }}">
             <i class="fas fa-chart-line"></i>
             <span>Catatan</span>
         </a>
@@ -58,7 +58,7 @@
     @endrole
 
     @role('pimpinan')
-        <li class="nav-item @if (request()->routeIs('dokument-kinerja.*') || request()->routeIs('kinerja.*')) active @endif">
+    <li class="nav-item @if (request()->routeIs('dokument-kinerja.*') || request()->routeIs('kinerja.*')) active @endif">
         <a class="nav-link" href="{{ route('dokument-kinerja.index') }}">
             <i class="fas fa-chart-line"></i>
             <span>Dokumen Kinerja</span>
@@ -70,8 +70,14 @@
             <span>Laporan Pegawai</span>
         </a>
     </li>
-    <li class="nav-item @if (request()->routeIs('dashboard')) active @endif">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+    <li class="nav-item @if (request()->routeIs('validasi-laporan.*')) active @endif">
+        <a class="nav-link" href="{{ route('validasi-laporan.index') }}">
+            <i class="fas fa-chart-line"></i>
+            <span>Validasi Laporan</span>
+        </a>
+    </li>
+    <li class="nav-item @if (request()->routeIs('catatan.*')) active @endif">
+        <a class="nav-link" href="{{ route('catatan.index') }}">
             <i class="fas fa-chart-line"></i>
             <span>Catatan</span>
         </a>
@@ -79,22 +85,20 @@
     @endrole
 
     @role('pegawai')
-    <li class="nav-item @if (request()->routeIs('dashboard')) active @endif">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+    <li class="nav-item @if (request()->routeIs('dokument-kinerja.*') || request()->routeIs('kinerja.*')) active @endif">
+        <a class="nav-link" href="{{ route('dokument-kinerja.index') }}">
             <i class="fas fa-chart-line"></i>
-            <span>Daftar Kinerja</span>
+            <span>Dokumen Kinerja</span>
         </a>
     </li>
 
-    <li class="nav-item @if (request()->routeIs('dashboard')) active @endif">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+    <li class="nav-item @if (request()->routeIs('catatan.*')) active @endif">
+        <a class="nav-link" href="{{ route('catatan.index') }}">
             <i class="fas fa-chart-line"></i>
             <span>Catatan</span>
         </a>
     </li>
     @endrole
-
-
 
     {{-- ? pengumuman --}}
     {{-- <li class="nav-item {{ request()->routeIs('dashboard.pengumuman*') ? 'active' : '' }}">

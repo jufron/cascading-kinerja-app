@@ -53,117 +53,211 @@
     <div class="min-h-screen flex fle-col items-center justify-center">
         <div class="py-6 px-4">
             <div class="grid lg:grid-cols-2 items-center gap-6 max-w-6xl w-full">
-                <div
-                    class="border border-slate-300 rounded-lg p-6 max-w-md shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] max-lg:mx-auto">
+                <div class="border border-slate-300 rounded-lg p-6 shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)]">
                     <form action="{{ route('register') }}" method="POST" class="space-y-6">
                         @csrf
                         <div class="mb-12">
                             <div class="flex items-center gap-3">
                                 <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-14 h-14 object-contain" />
-                                <h1 class="text-slate-900 text-3xl font-semibold">Register</h1>
+                                <h1 class="text-slate-900 text-3xl font-semibold">Registrasi</h1>
                             </div>
 
                             <p class="text-slate-600 text-[15px] mt-6 leading-relaxed">
                                 Sebelum Masuk Silahkan Registrasi dulu.
                             </p>
                         </div>
-                        {{-- ? nip --}}
-                        <div>
-                            <label class="text-slate-900 text-sm font-medium mb-2 block">NIP</label>
-                            <div class="relative flex items-center">
-                                <div class="w-full">
-                                    <input 
-                                        name="nip" 
-                                        type="text"
-                                        class="w-full text-sm text-slate-900 border @error('nip') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
-                                        placeholder="Masukan NIP" 
-                                    />
-                                    @error('nip')
-                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                        <div class="grid grid-cols-2 gap-4">
+                            {{-- ? nip --}}
+                            <div>
+                                <label class="text-slate-900 text-sm font-medium mb-2 block">NIP</label>
+                                <div class="relative flex items-center">
+                                    <div class="w-full">
+                                        <input 
+                                            name="nip" 
+                                            type="text"
+                                            class="w-full text-sm text-slate-900 border @error('nip') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                            placeholder="Masukan NIP" 
+                                        />
+                                        @error('nip')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
-                                    class="w-[18px] h-[18px] absolute right-4" viewBox="0 0 24 24">
-                                    <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
-                                    <path
-                                        d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z"
-                                        data-original="#000000"></path>
-                                </svg>
+                            </div>
+                            {{-- ? name --}}
+                            <div>
+                                <label class="text-slate-900 text-sm font-medium mb-2 block">Username</label>
+                                <div class="relative flex items-center">
+                                    <div class="w-full">
+                                        <input 
+                                            name="name" 
+                                            type="text"
+                                            class="w-full text-sm text-slate-900 border @error('name') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                            placeholder="Masukan username" 
+                                        />
+                                        @error('name')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        {{-- ? name --}}
-                        <div>
-                            <label class="text-slate-900 text-sm font-medium mb-2 block">Username</label>
-                            <div class="relative flex items-center">
-                                <div class="w-full">
-                                    <input 
-                                        name="name" 
-                                        type="text"
-                                        class="w-full text-sm text-slate-900 border @error('name') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
-                                        placeholder="Masukan username" 
-                                    />
-                                    @error('name')
-                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                        <div class="grid grid-cols-2 gap-4">
+                            {{-- ? nama lengkap --}}
+                            <div>
+                                <label class="text-slate-900 text-sm font-medium mb-2 block">Nama Lengkap</label>
+                                <div class="relative flex items-center">
+                                    <div class="w-full">
+                                        <input 
+                                            name="nama_lengkap" 
+                                            type="text"
+                                            class="w-full text-sm text-slate-900 border @error('nama_lengkap') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                            placeholder="Masukan Nama Lengkap" 
+                                        />
+                                        @error('nama_lengkap')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
-                                    class="w-[18px] h-[18px] absolute right-4" viewBox="0 0 24 24">
-                                    <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
-                                    <path
-                                        d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z"
-                                        data-original="#000000"></path>
-                                </svg>
+                            </div>
+                            {{-- ? email --}}
+                            <div>
+                                <label class="text-slate-900 text-sm font-medium mb-2 block">Email</label>
+                                <div class="relative flex items-center">
+                                    <div class="w-full">
+                                        <input 
+                                            name="email" 
+                                            type="text"
+                                            class="w-full text-sm text-slate-900 border @error('email') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                            placeholder="Masukan Email" 
+                                        />
+                                        @error('email')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        {{-- ? email --}}
-                        <div>
-                            <label class="text-slate-900 text-sm font-medium mb-2 block">Email</label>
-                            <div class="relative flex items-center">
-                                <div class="w-full">
-                                    <input 
-                                        name="email" 
-                                        type="text"
-                                        class="w-full text-sm text-slate-900 border @error('email') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
-                                        placeholder="Masukan Email" 
-                                    />
-                                    @error('email')
-                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                        <div class="grid grid-cols-2 gap-4">
+                            {{-- ? password --}}
+                            <div>
+                                <label class="text-slate-900 text-sm font-medium mb-2 block">Password</label>
+                                <div class="relative flex items-center">
+                                    <div class="w-full">
+                                        <input 
+                                            name="password" 
+                                            type="password"
+                                            class="w-full text-sm text-slate-900 border @error('email') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                            placeholder="Masukan password" 
+                                        />
+                                        @error('password')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
-                                    class="w-[18px] h-[18px] absolute right-4" viewBox="0 0 24 24">
-                                    <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
-                                    <path
-                                        d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z"
-                                        data-original="#000000"></path>
-                                </svg>
+                            </div>
+                            {{-- ? password confim --}}
+                            <div>
+                                <label class="text-slate-900 text-sm font-medium mb-2 block">Password Konfirmasi</label>
+                                <div class="relative flex items-center">
+                                    <div class="w-full">
+                                        <input 
+                                            name="password_confirmation" 
+                                            type="password"
+                                            class="w-full text-sm text-slate-900 border @error('password_confirmation') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                            placeholder="Masukan password Konfirmasi" 
+                                        />
+                                        @error('password_confirmation')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        {{-- ? password --}}
+                        {{-- ? jabatan_id --}}
                         <div>
-                            <label class="text-slate-900 text-sm font-medium mb-2 block">Password</label>
+                            <label class="text-slate-900 text-sm font-medium mb-2 block">
+                                Jabatan
+                            </label>
+
                             <div class="relative flex items-center">
                                 <div class="w-full">
-                                    <input 
-                                        name="password" 
-                                        type="password"
-                                        class="w-full text-sm text-slate-900 border @error('email') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
-                                        placeholder="Masukan password" 
-                                    />
-                                    @error('password')
+                                    <select 
+                                        name="jabatan_id"
+                                        class="w-full text-sm text-slate-900 border 
+                                            @error('jabatan_id') border-red-500 bg-red-50 
+                                            @else border-slate-300 
+                                            @enderror 
+                                            pl-4 pr-10 py-3 rounded-lg outline-blue-600 appearance-none"
+                                    >
+                                        <option value="">Pilih Jabatan</option>
+                                        @foreach ($jabatan as $j)
+                                            <option value="{{ $j->id }}">{{ $j->nama_jabatan }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('jabatan_id')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
-                                    class="w-[18px] h-[18px] absolute right-4 cursor-pointer" viewBox="0 0 128 128">
-                                    <path
-                                        d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z"
-                                        data-original="#000000"></path>
-                                </svg>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            {{-- ? bidang --}}
+                            <div>
+                                <label class="text-slate-900 text-sm font-medium mb-2 block">Bidang</label>
+                                <div class="relative flex items-center">
+                                    <div class="w-full">
+                                        <input 
+                                            name="bidang" 
+                                            type="text"
+                                            class="w-full text-sm text-slate-900 border @error('bidang') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                            placeholder="Masukan Bidang" 
+                                        />
+                                        @error('bidang')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- ? pangkat_golongan --}}
+                            <div>
+                                <label class="text-slate-900 text-sm font-medium mb-2 block">Pangkat Golongan</label>
+                                <div class="relative flex items-center">
+                                    <div class="w-full">
+                                        <input 
+                                            name="pangkat_golongan" 
+                                            type="text"
+                                            class="w-full text-sm text-slate-900 border @error('pangkat_golongan') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                            placeholder="Masukan Pangkat Golongan" 
+                                        />
+                                        @error('pangkat_golongan')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap items-center justify-between gap-4">
+                        {{-- ? nomor telepon --}}
+                        <div>
+                            <label class="text-slate-900 text-sm font-medium mb-2 block">Nomor Telepon</label>
+                            <div class="relative flex items-center">
+                                <div class="w-full">
+                                    <input 
+                                        name="nomor_telepon" 
+                                        type="text"
+                                        class="w-full text-sm text-slate-900 border @error('nomor_telepon') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                        placeholder="Masukan Nomor Telepon"
+                                    />
+                                    @error('nomor_telepon')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <div class="flex flex-wrap items-center justify-between gap-4">
                             <div class="flex items-center">
                                 <input id="remember-me" name="remember-me" type="checkbox"
                                     class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-slate-300 rounded" />
@@ -176,17 +270,16 @@
                                     Forgot your password?
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="!mt-12">
-                            <button type="submit"
-                                class="w-full shadow-xl py-2.5 px-4 text-[15px] font-medium tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none cursor-pointer">
-                                Login
+                            <button type="submit" class="w-full shadow-xl py-2.5 px-4 text-[15px] font-medium tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none cursor-pointer">
+                                Registrasi
                             </button>
-                            <p class="text-sm !mt-6 text-center text-slate-600">Jika Tidak Memiliki Akun silahkan<a
-                                    href="{{ route('register') }}"
+                            <p class="text-sm !mt-6 text-center text-slate-600">Jika sudah Memiliki Akun silahkan<a
+                                    href="{{ route('login') }}"
                                     class="text-blue-600 font-medium hover:underline ml-1 whitespace-nowrap">
-                                    Daftar
+                                    Login
                                 </a>
                             </p>
                         </div>

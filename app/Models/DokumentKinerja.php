@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use App\Date\DateFormatCreatedAtAndUpdatedAt;
+use App\Observers\DokumentKinerjaObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy([DokumentKinerjaObserver::class])]
 class DokumentKinerja extends Model
 {
     use DateFormatCreatedAtAndUpdatedAt;
@@ -35,5 +39,10 @@ class DokumentKinerja extends Model
     public function kinerja () : HasMany
     {
         return $this->hasMany(Kinerja::class);
+    }
+
+    public function validasiLaporan () : HasOne
+    {
+        return $this->hasOne(validationLaaporan::class);
     }
 }

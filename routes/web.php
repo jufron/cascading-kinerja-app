@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\CatatanController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DokumenKinerjaController;
 use App\Http\Controllers\Dashboard\KinerjaController;
 use App\Http\Controllers\Dashboard\LaporanPegawaiController;
 use App\Http\Controllers\Dashboard\PejabatAtasanController;
 use App\Http\Controllers\Dashboard\PelaksanaanAnggaranController;
+use App\Http\Controllers\Dashboard\ValidationLaporanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -112,6 +114,23 @@ Route::middleware('auth')->group(function () {
                 'update'        => 'laporan-pegaai.update',
                 'destroy'       => 'laporan-pegaai.destroy',
             ]);
+    // ? validasi laporan
+    Route::resource('validasi-laporan', ValidationLaporanController::class)
+            ->except(['create', 'store', 'destroy'])
+            ->parameters(['validasi-laporan' => 'validationLaporan'])
+            ->names([
+                'index'         => 'validasi-laporan.index',
+                'create'        => 'validasi-laporan.create',
+                'store'         => 'validasi-laporan.store',
+                'show'          => 'validasi-laporan.show',
+                'edit'          => 'validasi-laporan.edit',
+                'update'        => 'validasi-laporan.update',
+                'destroy'       => 'validasi-laporan.destroy',
+            ]);
+
+    // ? catatan
+    Route::get('catatan', [CatatanController::class, 'index'])
+            ->name('catatan.index');
 
     //* pegawai
 });
