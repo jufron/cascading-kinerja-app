@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\DokumentKinerja;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KinerjaRequest;
+use App\Models\PelaksanaanAnggaran;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 
@@ -36,10 +37,16 @@ class KinerjaController extends Controller
             },
         ])->latest()->get();
 
+        // * kinerja model
         $kinerja = Kinerja::with(['dokumentKinerja:id'])->where('dokument_kinerja_id', $dokumentKinerja->id)->latest()->get();
+
+        // * pelaksanaan anggaran model
+        $pelaksanaanAnggaran = PelaksanaanAnggaran::query()->whereIn('kinerja_id', $kinerja->pluck('id'))->latest()->get();
+
         return view('dashboard.admin.kinerja.kinerja', [
             'dokumentKinerja'       => $dokumentKinerja,
-            'kinerja'               => $kinerja
+            'kinerja'               => $kinerja,
+            'pelaksanaanAnggaran'   => $pelaksanaanAnggaran
         ]);
     }
 

@@ -77,18 +77,15 @@
                     </li>
                 </ul>
 
-                <a href="{{ route('kinerja.create', $dokumentKinerja) }}" class="btn btn-success my-3">Tambah Kinerja</a>
+                <a href="{{ route('kinerja.create', $dokumentKinerja) }}" class="btn btn-success my-3">Tambah
+                    Kinerja</a>
                 <div class="table-responsive">
-                    <table
-                        class="table table-bordered"
-                        id="dataTable"
-                        width="100%"
-                        cellspacing="0"
-                        >
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi</th>
+                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi
+                                </th>
                                 <th>Sasaran Strategis Individu / Rencana Hasil Kerja Individu</th>
                                 <th>Indikator Kinerja Individu</th>
                                 <th>Target / Satuan</th>
@@ -100,7 +97,8 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi</th>
+                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi
+                                </th>
                                 <th>Sasaran Strategis Individu / Rencana Hasil Kerja Individu</th>
                                 <th>Indikator Kinerja Individu</th>
                                 <th>Target / Satuan</th>
@@ -111,38 +109,37 @@
                         </tfoot>
                         <tbody>
                             @foreach ($kinerja as $kj)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $kj->sasaran_strategis }}</td>
-                                <td>{{ $kj->sasaran_strategis_individu }}</td>
-                                <td>{{ $kj->indikator_kinerja_individu }}</td>
-                                <td>{{ $kj->target }}</td>
-                                <td>{{ $kj->updated_at }}</td>
-                                <td>{{ $kj->created_at }}</td>
-                                <td>
-                                    <form
-                                        id="banner-delete-form" action="{{ route('kinerja.destroy', [$dokumentKinerja, $kj]) }}" method="post" class="d-flex">
-                                        @method('delete')
-                                        @csrf
-                                        <button
-                                            id="button-banner-info"
-                                            type="button"
-                                            class="btn btn-info btn-circle btn-sm"
-                                            data-toggle="modal"
-                                            data-target="#faq"
-                                            data-url="{{ route('kinerja.show', [$dokumentKinerja, $kj]) }}"
-                                            >
-                                            <i class="fas fa-info-circle"></i>
-                                        </button>
-                                        <a href="{{ route('kinerja.edit', [$dokumentKinerja, $kj]) }}" class="btn btn-warning btn-circle btn-sm">
-                                            <i class="fas fa-exclamation-triangle"></i>
-                                        </a>
-                                        <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kj->sasaran_strategis }}</td>
+                                    <td>{{ $kj->sasaran_strategis_individu }}</td>
+                                    <td>{{ $kj->indikator_kinerja_individu }}</td>
+                                    <td>{{ $kj->target }}</td>
+                                    <td>{{ $kj->updated_at }}</td>
+                                    <td>{{ $kj->created_at }}</td>
+                                    <td>
+                                        <form id="banner-delete-form"
+                                            action="{{ route('kinerja.destroy', [$dokumentKinerja, $kj]) }}"
+                                            method="post" class="d-flex">
+                                            @method('delete')
+                                            @csrf
+                                            <button id="button-banner-info" type="button"
+                                                class="btn btn-info btn-circle btn-sm" data-toggle="modal"
+                                                data-target="#faq"
+                                                data-url="{{ route('kinerja.show', [$dokumentKinerja, $kj]) }}">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <a href="{{ route('kinerja.edit', [$dokumentKinerja, $kj]) }}"
+                                                class="btn btn-warning btn-circle btn-sm">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </a>
+                                            <button type="button" id="banner-delete-button"
+                                                class="btn btn-danger btn-circle btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -156,15 +153,10 @@
             </div>
             <div class="card-body">
 
-                <a href="{{ route('daftar-admin.create') }}" class="btn btn-success my-3">Tambah Anggaran</a>
-
+                <a href="{{ route('pelaksanaan-anggaran.create', $dokumentKinerja) }}"
+                    class="btn btn-success my-3">Tambah Anggaran</a>
                 <div class="table-responsive">
-                    <table
-                        class="table table-bordered"
-                        id="dataTable"
-                        width="100%"
-                        cellspacing="0"
-                        >
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -188,7 +180,38 @@
                             </tr>
                         </tfoot>
                         <tbody>
-
+                            @foreach ($pelaksanaanAnggaran as $pa)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $pa->program_kegiatan }}</td>
+                                    <td>{{ $pa->jumlah_anggaran }}</td>
+                                    <td>{{ $pa->target_kegiatan }}</td>
+                                    <td>{{ $pa->updated_at }}</td>
+                                    <td>{{ $pa->created_at }}</td>
+                                    <td>
+                                        <form id="banner-delete-form"
+                                            action="{{ route('pelaksanaan-anggaran.destroy', [$dokumentKinerja, $pa]) }}"
+                                            method="post" class="d-flex">
+                                            @method('delete')
+                                            @csrf
+                                            <button id="button-anggaran-info" type="button"
+                                                class="btn btn-info btn-circle btn-sm" data-toggle="modal"
+                                                data-target="#faq"
+                                                data-url="{{ route('pelaksanaan-anggaran.show', [$dokumentKinerja, $pa]) }}">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <a href="{{ route('pelaksanaan-anggaran.edit', ['dokumentKinerja' => $dokumentKinerja,  $pa]) }}"
+                                                class="btn btn-warning btn-circle btn-sm">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </a>
+                                            <button type="button" id="banner-delete-button"
+                                                class="btn btn-danger btn-circle btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -196,14 +219,15 @@
         </div>
 
         {{-- ? Modal info  --}}
-        <div class="modal fade" id="faq" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="faqLabel" aria-hidden="true">
+        <div class="modal fade" id="faq" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="faqLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="faqLabel">Pertanyaan Faq Info</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body" id="modal-banner-container-info">
 
@@ -234,10 +258,10 @@
             const formSubmit = document.querySelectorAll('#banner-delete-form');
 
             allButtonDelete.forEach((buttonDelete, index) => {
-                buttonDelete.addEventListener('click', function (event) {
+                buttonDelete.addEventListener('click', function(event) {
                     event.preventDefault();
                     modalSweatAlert({
-                        title : 'Hapus Data',
+                        title: 'Hapus Data',
                         text: 'anda yakin ingin menghapus data tersebut?',
                         form: formSubmit[index]
                     });
@@ -246,11 +270,20 @@
 
             const faq = () => {
                 const button_info = document.querySelectorAll('#button-banner-info');
+                const button_info_anggaran = document.querySelectorAll('#button-anggaran-info');
 
                 button_info.forEach(info => {
-                    info.addEventListener('click', function () {
+                    info.addEventListener('click', function() {
                         const dataUrl = info.getAttribute('data-url');
                         getData(dataUrl);
+                        renderLoading(true);
+                    });
+                });
+
+                button_info_anggaran.forEach(anngaranInfo => {
+                    anngaranInfo.addEventListener('click', function () {
+                        const dataUrl = anngaranInfo.getAttribute('data-url');
+                        getDataAnggaran(dataUrl);
                         renderLoading(true);
                     });
                 });
@@ -280,6 +313,144 @@
                             `${err.status}`
                         );
                     });
+            };
+
+            const getDataAnggaran = async (dataUrl) => {
+                try {
+                    let response = await fetch(dataUrl);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    let result = await response.json();
+
+                    renderLoading(false);
+                    renderAnggaran(result);
+                } catch (err) {
+                    renderErrorMessage(
+                        `An error occurred: ${err.message}`,
+                        `${err.status}`
+                    );
+                }
+            };
+
+            const renderAnggaran = (data) => {
+                const modalContainerInfo = document.querySelector('#modal-banner-container-info');
+                // console.log(data);
+
+                const element = `
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.sasaran_strategis}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Sasaran Strategis Individu / Rencana Hasil Kerja Individu
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.sasaran_strategis_individu}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Indikator Kinerja Individu
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.indikator_kinerja_individu}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Target / Satuan
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.target}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Program Kegiatan
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.program_kegiatan}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Jumlah Anggaran
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.jumlah_anggaran}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Target Kegiatan
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.target_kegiatan}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Tanggal Buat
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.created_at}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Tanggal Perbaharui
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.updated_at}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                `;
+                modalContainerInfo.innerHTML = element;
             };
 
             const renderErrorMessage = (message, statusCode) => {
@@ -389,8 +560,6 @@
             };
 
             faq();
-
         </script>
     </x-slot:buttonOptional>
 </x-dashboard.layouts.base-dashboard>
-

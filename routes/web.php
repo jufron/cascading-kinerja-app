@@ -83,11 +83,12 @@ Route::middleware('auth')->group(function () {
                 'destroy'       => 'kinerja.destroy',
             ]);
     // ? kinerja & pelaksanaan anggaran
+    Route::get('dokument-kinerja/{dokumentKinerja}/anggaran/search', [PelaksanaanAnggaranController::class, 'search'])->name('pelaksanaan-anggaran.search');
     Route::resource('dokument-kinerja.anggaran', PelaksanaanAnggaranController::class)
             ->except([])
             ->parameters([
                 'dokument-kinerja'    => 'dokumentKinerja',
-                'anggaran'            => 'anggaran'
+                'anggaran'            => 'pelaksanaanAnggaran'
             ])
             ->names([
                 'index'         => 'pelaksanaan-anggaran.index',

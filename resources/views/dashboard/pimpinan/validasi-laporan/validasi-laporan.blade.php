@@ -30,6 +30,7 @@
                                 <th>No</th>
                                 <th>Dokumen Kinerja Tipe</th>
                                 <th>status</th>
+                                <th>tahun</th>
                                 <th>komentar</th>
                                 <th>tanggal Perubahan</th>
                                 <th>Tanggal Pembuatan</th>
@@ -41,6 +42,7 @@
                                 <th>No</th>
                                 <th>Dokumen Kinerja Tipe</th>
                                 <th>status</th>
+                                <th>tahun</th>
                                 <th>komentar</th>
                                 <th>tanggal Perubahan</th>
                                 <th>Tanggal Pembuatan</th>
@@ -52,6 +54,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $dk->dokumentKinerja->jenis_kinerja }}</td>
+                                <td>{{ $dk->dokumentKinerja->tahun }}</td>
                                 <td>{{ $dk->status }}</td>
                                 <td>{{ $dk->komentar }}</td>
                                 <td>{{ $dk->updated_at }}</td>
@@ -91,10 +94,10 @@
 
         {{-- ? Modal info  --}}
         <div class="modal fade" id="faq" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="faqLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="faqLabel">Pertanyaan Faq Info</h5>
+                        <h5 class="modal-title" id="faqLabel">Validasi Laporan Info</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -189,6 +192,69 @@
                 const modalContainerInfo = document.querySelector('#modal-banner-container-info');
 
                 const element = `
+                    <p>Dokuent Kinerja</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Tipe Dokument Kinerja
+                                </div>
+                                <div class="col-md-3">
+                                    : asd
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Pihak Pertama
+                                </div>
+                                <div class="col-md-3">
+                                    : asd
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Pihak Kedua
+                                </div>
+                                <div class="col-md-3">
+                                    : asd
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    NIP
+                                </div>
+                                <div class="col-md-3">
+                                    : asd
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    NIP
+                                </div>
+                                <div class="col-md-3">
+                                    : asd
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Tahun
+                                </div>
+                                <div class="col-md-3">
+                                    : asd
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <br/>
+                    <br/>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">

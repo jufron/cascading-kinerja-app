@@ -14,11 +14,20 @@ class CatatanController extends Controller
             'dokumentKinerja'   => function ($query) {
                 $query->select(
                     'id',
-                    'dokument_kinerja_id',
-                    'status',
-                    'komentar'
+                    'user_id_pihak_pertama',
+                    'user_id_pihak_kedua',
+                    'jenis_kinerja',
+                    'head_dokument',
+                    'body_dokument',
+                    'tahun'
                 );
             },
+            'dokumentKinerja.userPertama'   => function ($query) {
+                $query->select('id', 'nip');
+            },
+            'dokumentKinerja.userKedua'     => function ($query) {
+                $query->select('id', 'nip');
+            }
         ])->latest()->get();
 
         return view('dashboard.catatan.catatan', compact('validationLaporan'));
