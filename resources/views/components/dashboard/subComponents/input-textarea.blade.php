@@ -4,7 +4,11 @@
         class="form-control @error($name) is-invalid @enderror"
         id="{{ $name }}"
         name="{{ $name }}"
+        @isset($rows)
+        rows="{{ $rows }}"
+        @else
         rows="5"
+        @endisset
         spellcheck="false"
         @isset($placeholder)
         placeholder="{{ $placeholder }}"

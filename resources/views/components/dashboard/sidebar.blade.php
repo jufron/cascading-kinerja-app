@@ -1,9 +1,18 @@
 {{-- ? Sidebar  --}}
 <ul class="navbar-nav bg-gray-900 sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    {{-- ? Sidebar - Brand  --}}
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-text mx-3">App</div>
+    {{-- ? Sidebar - Brand --}}
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
+        <div class="sidebar-brand-icon">
+            <img
+                src="{{ asset('img/logo.png') }}"
+                alt="Logo"
+                style="width: 32px; height: 32px; object-fit: contain;"
+            >
+        </div>
+        <div class="sidebar-brand-text mx-3">
+            Cascading Kinerja
+        </div>
     </a>
 
     {{-- ? Divider  --}}

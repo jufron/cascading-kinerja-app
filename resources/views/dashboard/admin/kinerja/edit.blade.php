@@ -20,36 +20,44 @@
                 <form action="{{ route('kinerja.update', [$dokumentKinerja, $kinerja]) }}" method="POST">
                     @csrf
                     @method('patch')
-                    <div class="row">
-                        <div class="col-md-6">
-                            <x-dashboard.subComponents.input
-                                label="Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi"
-                                name="sasaran_strategis"
-                                valueData="{{ old('sasaran_strategis', $kinerja->sasaran_strategis) }}"
-                            />
-                        </div>
-                        <div class="col-md-6">
-                            <x-dashboard.subComponents.input
-                                label="Sasaran Strategis Individu / Rencana Hasil Kerja Individu"
-                                name="sasaran_strategis_individu"
-                                valueData="{{ old('sasaran_strategis_individu', $kinerja->sasaran_strategis_individu) }}"
-                            />
-                        </div>
-                        <div class="col-md-6">
-                            <x-dashboard.subComponents.input
-                                label="Indikator Kinerja Individu"
-                                name="indikator_kinerja_individu"
-                                valueData="{{ old('indikator_kinerja_individu', $kinerja->indikator_kinerja_individu) }}"
-                            />
-                        </div>
-                        <div class="col-md-6">
-                            <x-dashboard.subComponents.input
-                                label="Target / Satuan"
-                                name="target"
-                                valueData="{{ old('target', $kinerja->target) }}"
-                            />
-                        </div>
+                    {{-- ? sasaran_strategis --}}
+                    <x-dashboard.subComponents.input-textarea
+                        label="Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi"
+                        name="sasaran_strategis"
+                        aria-placeholder="Optional"
+                        rows="3"
+                        >
+                        {{ old('sasaran_strategis', $kinerja->sasaran_strategis) }}
+                    </x-dashboard.subComponents.input-textarea>
+
+                    {{-- ? sasaran_strategis_individu --}}
+                    <x-dashboard.subComponents.input-textarea
+                        label="Sasaran Strategis Individu / Rencana Hasil Kerja Individu"
+                        name="sasaran_strategis_individu"
+                        aria-placeholder="Optional"
+                        rows="3"
+                        >
+                        {{  old('sasaran_strategis_individu', $kinerja->sasaran_strategis_individu) }}
+                    </x-dashboard.subComponents.input-textarea>
+
+                    {{-- ? indikator_kinerja_individu --}}
+                    <x-dashboard.subComponents.input-textarea
+                        label="Indikator Kinerja Individu"
+                        name="indikator_kinerja_individu"
+                        aria-placeholder="Optional"
+                        rows="3"
+                        >
+                        {{ old('indikator_kinerja_individu', $kinerja->indikator_kinerja_individu) }}
+                    </x-dashboard.subComponents.input-textarea>
+
+                    <div class="col-md-6">
+                        <x-dashboard.subComponents.input
+                            label="Target / Satuan"
+                            name="target"
+                            valueData="{{ old('target', $kinerja->target) }}"
+                        />
                     </div>
+
                     <button class="btn btn-success">Perbaharui</button>
                 </form>
             </div>
