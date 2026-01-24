@@ -63,9 +63,9 @@
                                         id="banner-delete-form" action="{{ route('dokument-kinerja.destroy', $dk) }}" method="post" class="d-flex">
                                         @method('delete')
                                         @csrf
-                                        {{-- <a href="#" class="btn btn-primary btn-circle btn-sm">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a> --}}
+                                        <a href="{{ route('dokument-kinerja.download.word', $dk) }}" class="btn btn-success btn-circle btn-sm">
+                                            <i class="fas fa-download"></i>
+                                        </a>
                                         <a href="{{ route('kinerja.index', $dk) }}" class="btn btn-success btn-circle btn-sm">
                                             <i class="fas fa-check"></i>
                                         </a>

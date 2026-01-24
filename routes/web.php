@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
             ]);
     // ? dokumen kinerja
     Route::get('dokument-kinerja/search', [DokumenKinerjaController::class, 'search'])->name('dokument-kinerja.search');
+    Route::get('dokument-kinerja/{dokumentKinerja}/download', [DokumenKinerjaController::class, 'exportWord'])->name('dokument-kinerja.download.word');
     Route::resource('dokument-kinerja', DokumenKinerjaController::class)
             ->except([])
             ->parameters(['dokument-kinerja'    => 'dokumentKinerja'])
