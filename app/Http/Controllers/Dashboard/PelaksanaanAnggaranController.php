@@ -74,13 +74,8 @@ class PelaksanaanAnggaranController extends Controller
         }
 
         return response()->json([
-            'kinerja_id'                    => $pelaksanaanAnggaran->kinerja_id,
-            'sasaran_strategis'             => $pelaksanaanAnggaran->kinerja->sasaran_strategis,
-            'sasaran_strategis_individu'    => $pelaksanaanAnggaran->kinerja->sasaran_strategis_individu,
-            'indikator_kinerja_individu'    => $pelaksanaanAnggaran->kinerja->indikator_kinerja_individu,
-            'target'                        => $pelaksanaanAnggaran->kinerja->target,
             'program_kegiatan'              => $pelaksanaanAnggaran->program_kegiatan,
-            'jumlah_anggaran'               => $pelaksanaanAnggaran->jumlah_anggaran,
+            'jumlah_anggaran'               => $pelaksanaanAnggaran->jumlah_anggaran_format,
             'target_kegiatan'               => $pelaksanaanAnggaran->target_kegiatan,
             'created_at'                    => $pelaksanaanAnggaran->created_at,
             'updated_at'                    => $pelaksanaanAnggaran->updated_at

@@ -184,7 +184,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $pa->program_kegiatan }}</td>
-                                    <td>{{ $pa->jumlah_anggaran }}</td>
+                                    <td>{{ $pa->jumlah_anggaran_format }} </td>
                                     <td>{{ $pa->target_kegiatan }}</td>
                                     <td>{{ $pa->updated_at }}</td>
                                     <td>{{ $pa->created_at }}</td>
@@ -339,55 +339,6 @@
                 // console.log(data);
 
                 const element = `
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.sasaran_strategis}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Sasaran Strategis Individu / Rencana Hasil Kerja Individu
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.sasaran_strategis_individu}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Indikator Kinerja Individu
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.indikator_kinerja_individu}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Target / Satuan
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.target}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
