@@ -97,10 +97,10 @@
 
         {{-- ? Modal info  --}}
         <div class="modal fade" id="faq" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="faqLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="faqLabel">Pertanyaan Faq Info</h5>
+                        <h5 class="modal-title" id="faqLabel">Dokumen Kinerja Info</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -192,17 +192,18 @@
             };
 
             const renderHTML = (data) => {
+                console.log(data);
                 const modalContainerInfo = document.querySelector('#modal-banner-container-info');
 
                 const element = `
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Username
+                                <div class="col-md-3 font-weight-bold">
+                                    Tipe Dokument Kinerja
                                 </div>
-                                <div class="col-md-8">
-                                    : ${data.username}
+                                <div class="col-md-3">
+                                    ${data.tipe_dokument_kinerja}
                                 </div>
                             </div>
                         </li>
@@ -210,11 +211,35 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-4 font-weight-bold">
+                                <div class="col-md-3 font-weight-bold">
+                                    Pihak Pertama
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.nama_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Pihak Kedua
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.nama_user_kedua}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
                                     NIP
                                 </div>
-                                <div class="col-md-8">
-                                    : ${data.nip}
+                                <div class="col-md-3">
+                                    ${data.nip_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    NIP
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.nip_user_kedua}
                                 </div>
                             </div>
                         </li>
@@ -222,35 +247,17 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Email
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.email}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Nama Lengkap
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.nama_lengkap}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
+                                <div class="col-md-3 font-weight-bold">
                                     Jabatan
                                 </div>
-                                <div class="col-md-8">
-                                    : ${data.nama_jabatan}
+                                <div class="col-md-3">
+                                    ${data.jabatan_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Jabatan
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.jabatan_user_kedua}
                                 </div>
                             </div>
                         </li>
@@ -258,11 +265,48 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-4 font-weight-bold">
+                                <div class="col-md-3 font-weight-bold">
                                     Bidang
                                 </div>
-                                <div class="col-md-8">
-                                    : ${data.bidang}
+                                <div class="col-md-3">
+                                    ${data.bidang_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Bidang
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.bidang_user_kedua}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Pangkat / Golongan
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.pangkat_golongan_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Pangkat / Golongan
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.pangkat_golongan_user_kedua}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Tahun
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.tahun}
                                 </div>
                             </div>
                         </li>
@@ -271,10 +315,10 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-4 font-weight-bold">
-                                    Pangkat Golongan
+                                    Kepala Dokumen
                                 </div>
                                 <div class="col-md-8">
-                                    : ${data.pangkat_golongan}
+                                    : ${data.head_dokument}
                                 </div>
                             </div>
                         </li>
@@ -283,14 +327,88 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-4 font-weight-bold">
-                                    Nomor Telepon
+                                    Badan Dokumen
                                 </div>
                                 <div class="col-md-8">
-                                    : ${data.nomor_telepon}
+                                    : ${data.body_dokument}
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    <div class="font-weight-bold my-4">
+                        Daftar Kinerja
+                    </div>
+                    ${data.kinerja === null || data.kinerja === undefined || data.kinerja.length === 0
+                        ? ``
+                        : `
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi
+                                        </th>
+                                        <th>Sasaran Strategis Individu / Rencana Hasil Kerja Individu</th>
+                                        <th>Indikator Kinerja Individu</th>
+                                        <th>Target / Satuan</th>
+                                        <th>tanggal Perubahan</th>
+                                        <th>Tanggal Pembuatan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${data.kinerja.map((item, index) =>
+                                        `
+                                            <tr>
+                                                <th scope="row">${index + 1}</th>
+                                                <td>${item.sasaran_strategis}</td>
+                                                <td>${item.sasaran_strategis_individu}</td>
+                                                <td>${item.indikator_kinerja_individu}</td>
+                                                <td>${item.target}</td>
+                                                <td>${item.created_at}</td>
+                                                <td>${item.updated_at}</td>
+                                            </tr>
+                                        `)
+                                        .join('')
+                                    }
+                                </tbody>
+                            </table>
+                        `
+                    }
+                    <div class="font-weight-bold my-4">
+                        Anggaran
+                    </div>
+                    ${data.pelaksanaan_anggaran === null || data.pelaksanaan_anggaran === undefined || data.pelaksanaan_anggaran.length === 0
+                        ? ``
+                        : `
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Program Kegiatan</th>
+                                        <th scope="col">jumlah_anggaran</th>
+                                        <th scope="col">Target Kegiatan</th>
+                                        <th scope="col">Tanggal Buar</th>
+                                        <th scope="col">Tanggal Perbaharui</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${data.pelaksanaan_anggaran.map((item, index) =>
+                                        `
+                                            <tr>
+                                                <th scope="row">${index + 1}</th>
+                                                <td>${item.program_kegiatan}</td>
+                                                <td>${item.jumlah_anggaran}</td>
+                                                <td>${item.target_kegiatan}</td>
+                                                <td>${item.created_at}</td>
+                                                <td>${item.updated_at}</td>
+                                            </tr>
+                                        `)
+                                        .join('')
+                                    }
+                                </tbody>
+                            </table>
+                        `
+                    }
+
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">

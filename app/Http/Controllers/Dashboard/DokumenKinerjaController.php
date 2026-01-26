@@ -132,9 +132,58 @@ class DokumenKinerjaController extends Controller
         return redirect()->route('dokument-kinerja.index');
     }
 
-    public function show (DokumentKinerja $dokumentKinerja)
+    public function show (DokumentKinerja $dokumentKinerja) : JsonResponse
     {
+        if (! $dokumentKinerja) {
+            return response()->json(null, 404);
+        }
 
+        $dokumentKinerja->load([
+            'userPertama' => function ($query) {
+                $query->select(['id', 'nip']);
+            },
+            'userPertama.biodata' => function ($query) {
+                $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
+            },
+            'userPertama.biodata.jabatan' => function ($query) {
+                $query->select(['id', 'nama_jabatan']);
+            },
+            'userKedua' => function ($query) {
+                $query->select(['id', 'nip']);
+            },
+            'userKedua.biodata' => function ($query) {
+                $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
+            },
+            'userKedua.biodata.jabatan' => function ($query) {
+                $query->select(['id', 'nama_jabatan']);
+            },
+            'kinerja' => function ($query) {
+                $query->select(['dokument_kinerja_id', 'sasaran_strategis', 'sasaran_strategis_individu', 'indikator_kinerja_individu', 'target']);
+            },
+        ])->latest()->get();
+
+        return response()->json([
+            'tipe_dokument_kinerja'         => $dokumentKinerja->jenis_kinerja,
+            'head_dokument'                 => $dokumentKinerja->head_dokument,
+            'body_dokument'                 => $dokumentKinerja->body_dokument,
+            'tahun'                         => $dokumentKinerja->tahun,
+
+            'nama_user_pertama'             => $dokumentKinerja->userPertama->biodata->nama_lengkap,
+            'jabatan_user_pertama'          => $dokumentKinerja->userPertama->biodata->jabatan->nama_jabatan,
+            'bidang_user_pertama'           => $dokumentKinerja->userPertama->biodata->bidang,
+            'pangkat_golongan_user_pertama' => $dokumentKinerja->userPertama->biodata->pangkat_golongan,
+            'nip_user_pertama'              => $dokumentKinerja->userPertama->nip,
+
+            'nama_user_kedua'               => $dokumentKinerja->userKedua->biodata->nama_lengkap,
+            'jabatan_user_kedua'            => $dokumentKinerja->userKedua->biodata->jabatan->nama_jabatan,
+            'bidang_user_kedua'             => $dokumentKinerja->userKedua->biodata->bidang,
+            'pangkat_golongan_user_kedua'   => $dokumentKinerja->userKedua->biodata->pangkat_golongan,
+            'nip_user_kedua'                => $dokumentKinerja->userKedua->nip,
+            'kinerja'                       => $dokumentKinerja->kinerja()->latest()->get(),
+            'pelaksanaan_anggaran'          => PelaksanaanAnggaran::query()->whereIn('kinerja_id', $dokumentKinerja->kinerja()->pluck('id'))->latest()->get(),
+            'created_at'                    => $dokumentKinerja->created_at,
+            'updated_at'                    => $dokumentKinerja->updated_at,
+        ], 200);
     }
 
     public function edit (DokumentKinerja $dokumentKinerja) : View
