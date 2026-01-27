@@ -56,9 +56,9 @@ class UserSeeder extends Seeder
             ],
             [
                 'name'              => 'wilhelm',
-                'nip'               => '196908221991011001',
+                'nip'               => '19750608200012006',
                 'email'             => 'wilhelm@mail.com',
-                'password'          => Hash::make('196908221991011001'),  // todo role pegawai
+                'password'          => Hash::make('19750608200012006'),  // todo role pegawai
             ],
         ])->each( function ($item) {
             User::create($item);

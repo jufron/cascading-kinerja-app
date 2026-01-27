@@ -54,8 +54,8 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $dk->dokumentKinerja->jenis_kinerja }}</td>
-                                <td>{{ $dk->dokumentKinerja->tahun }}</td>
                                 <td>{{ $dk->status }}</td>
+                                <td>{{ $dk->dokumentKinerja->tahun }}</td>
                                 <td>{{ $dk->komentar }}</td>
                                 <td>{{ $dk->updated_at }}</td>
                                 <td>{{ $dk->created_at }}</td>
