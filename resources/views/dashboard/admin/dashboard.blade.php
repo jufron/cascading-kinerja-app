@@ -15,7 +15,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                                     Admin</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ 'user' }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $daftar_admin }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa-solid fa-users fa-2x"></i>
@@ -33,7 +33,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Pejabat Atasan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ 'berita' }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $daftar_pejabat_atasan }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa-solid fa-newspaper fa-2x"></i>
@@ -51,7 +51,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Dokumen Kinerja</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ 'kategory' }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dokumen_kinerja }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa-solid fa-newspaper fa-2x"></i>
@@ -69,7 +69,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                     Catatan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">111</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $catatan }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-comments fa-2x"></i>

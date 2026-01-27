@@ -1,50 +1,4 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    {{-- <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form> --}}
-
     <div class="min-h-screen flex fle-col items-center justify-center">
         <div class="py-6 px-4">
             <div class="grid lg:grid-cols-2 items-center gap-6 max-w-6xl w-full">
@@ -63,16 +17,16 @@
                             </p>
                         </div>
                         <div>
-                            <label class="text-slate-900 text-sm font-medium mb-2 block">Email</label>
+                            <label class="text-slate-900 text-sm font-medium mb-2 block">Nip</label>
                             <div class="relative flex items-center">
                                 <div class="w-full">
-                                    <input 
-                                        name="email" 
+                                    <input
+                                        name="nip"
                                         type="text"
-                                        class="w-full text-sm text-slate-900 border @error('email') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
-                                        placeholder="Masukan Email" 
+                                        class="w-full text-sm text-slate-900 border @error('nip') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
+                                        placeholder="Masukan nip"
                                     />
-                                    @error('email')
+                                    @error('nip')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
@@ -89,11 +43,11 @@
                             <label class="text-slate-900 text-sm font-medium mb-2 block">Password</label>
                             <div class="relative flex items-center">
                                 <div class="w-full">
-                                    <input 
-                                        name="password" 
+                                    <input
+                                        name="password"
                                         type="password"
                                         class="w-full text-sm text-slate-900 border @error('email') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
-                                        placeholder="Masukan password" 
+                                        placeholder="Masukan password"
                                     />
                                     @error('password')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
