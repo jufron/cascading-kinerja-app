@@ -58,8 +58,8 @@
         </a>
     </li>
 
-    <li class="nav-item @if (request()->routeIs('dashboard')) active @endif">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+    <li class="nav-item @if (request()->routeIs('laporan.*')) active @endif">
+        <a class="nav-link" href="{{ route('laporan.index') }}">
             <i class="fas fa-chart-line"></i>
             <span>Laporan</span>
         </a>

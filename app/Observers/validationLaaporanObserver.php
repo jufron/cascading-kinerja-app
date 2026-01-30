@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Catatan;
+use App\Models\Laporan;
 use App\Models\validationLaaporan;
 
 class validationLaaporanObserver
@@ -31,6 +32,12 @@ class validationLaaporanObserver
             'status'                    => $validationLaaporan->status,
             'komentar'                  => $validationLaaporan->komentar,
         ]);
+
+        if($validationLaaporan->status === 'disetujui') {
+            Laporan::create([
+                'validation_laporan_id'     => $validationLaaporan->id,
+            ]);
+        }
     }
 
     /**

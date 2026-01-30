@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\CatatanController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DokumenKinerjaController;
 use App\Http\Controllers\Dashboard\KinerjaController;
+use App\Http\Controllers\Dashboard\LaporanController;
 use App\Http\Controllers\Dashboard\LaporanPegawaiController;
 use App\Http\Controllers\Dashboard\PejabatAtasanController;
 use App\Http\Controllers\Dashboard\PelaksanaanAnggaranController;
@@ -135,6 +136,14 @@ Route::middleware('auth')->group(function () {
         Route::get('catatan', 'index')->name('catatan.index');
         Route::get('catatan/{catatan}', 'show')->name('catatan.show');
     });
+
+    // ? laporan
+    Route::controller(LaporanController::class)->group( function () {
+        Route::get('laporan', 'index')->name('laporan.index');
+        Route::get('laporan/{validationLaporan}', 'show')->name('laporan.show');
+        Route::get('laporan/{validationLaporan}/download', 'download')->name('laporan.download.word');
+    });
+
     //* pegawai
 });
 
