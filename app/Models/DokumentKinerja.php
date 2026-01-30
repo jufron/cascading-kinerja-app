@@ -45,4 +45,9 @@ class DokumentKinerja extends Model
     {
         return $this->hasOne(validationLaaporan::class);
     }
+
+    public function catatan () : HasMany
+    {
+        return $this->hasMany(Catatan::class);
+    }
 }

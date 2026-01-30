@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
-use App\Date\DateFormatCreatedAtAndUpdatedAt;
 use Illuminate\Database\Eloquent\Model;
+use App\Date\DateFormatCreatedAtAndUpdatedAt;
+use App\Observers\validationLaaporanObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
+#[ObservedBy([validationLaaporanObserver::class])]
 class validationLaaporan extends Model
 {
     Use DateFormatCreatedAtAndUpdatedAt;
@@ -20,5 +24,10 @@ class validationLaaporan extends Model
     public function dokumentKinerja ()
     {
         return $this->belongsTo(DokumentKinerja::class);
+    }
+
+    public function catatan () : HasMany
+    {
+        return $this->hasMany(Catatan::class);
     }
 }

@@ -28,7 +28,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Tipe Kinerja</th>
                                 <th>Status</th>
+                                <th>Tahun</th>
                                 <th>Catatan</th>
                                 <th>tanggal Perubahan</th>
                                 <th>Tanggal Pembuatan</th>
@@ -38,7 +40,9 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
+                                <th>Tipe Kinerja</th>
                                 <th>Status</th>
+                                <th>Tahun</th>
                                 <th>Catatan</th>
                                 <th>tanggal Perubahan</th>
                                 <th>Tanggal Pembuatan</th>
@@ -46,43 +50,42 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            {{-- @foreach ($validationLaporan as $dk)
+                            @foreach ($catatan as $c)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $dk->dokumentKinerja->jenis_kinerja }}</td>
-                                <td>{{ $dk->status }}</td>
-                                <td>{{ $dk->komentar }}</td>
-                                <td>{{ $dk->updated_at }}</td>
-                                <td>{{ $dk->created_at }}</td>
-                                <td> --}}
-
+                                <td>{{ $c->dokumentKinerja->jenis_kinerja }}</td>
+                                <td>{{ $c->status }}</td>
+                                <td>{{ $c->dokumentKinerja->tahun }}</td>
+                                <td>{{ $c->komentar }}</td>
+                                <td>{{ $c->updated_at }}</td>
+                                <td>{{ $c->created_at }}</td>
+                                <td>
                                     {{-- <form
-                                        id="banner-delete-form" action="{{ route('validasi-laporan.destroy', $dk) }}" method="post" class="d-flex">
+                                        id="banner-delete-form" action="{{ route('validasi-laporan.destroy', $vl) }}" method="post" class="d-flex">
                                         @method('delete')
                                         @csrf
-
                                         <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form> --}}
 
-                                    {{-- <button
+                                    <button
                                         id="button-banner-info"
                                         type="button"
                                         class="btn btn-info btn-circle btn-sm"
                                         data-toggle="modal"
                                         data-target="#faq"
-                                        data-url="{{ route('validasi-laporan.show', $dk) }}"
+                                        data-url="{{ route('catatan.show', $c) }}"
                                         >
                                         <i class="fas fa-info-circle"></i>
                                     </button>
-                                    <a href="{{ route('validasi-laporan.edit', $dk) }}" class="btn btn-warning btn-circle btn-sm">
+                                    {{-- <a href="{{ route('validasi-laporan.edit', $c) }}" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-exclamation-triangle"></i>
                                     </a> --}}
 
-                                {{-- </td>
+                                </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -91,10 +94,10 @@
 
         {{-- ? Modal info  --}}
         <div class="modal fade" id="faq" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="faqLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="faqLabel">Pertanyaan Faq Info</h5>
+                        <h5 class="modal-title" id="faqLabel">Detail Catatan</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -192,11 +195,114 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Status
+                                <div class="col-md-3 font-weight-bold">
+                                    Tipe Dokument Kinerja
                                 </div>
-                                <div class="col-md-8">
-                                    : ${data.status}
+                                <div class="col-md-3">
+                                    ${data.tipe_dokument_kinerja}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Pihak Pertama
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.nama_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Pihak Kedua
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.nama_user_kedua}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    NIP
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.nip_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    NIP
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.nip_user_kedua}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Jabatan
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.jabatan_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Jabatan
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.jabatan_user_kedua}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Bidang
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.bidang_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Bidang
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.bidang_user_kedua}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Pangkat / Golongan
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.pangkat_golongan_user_pertama}
+                                </div>
+                                <div class="col-md-3 font-weight-bold">
+                                    Pangkat / Golongan
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.pangkat_golongan_user_kedua}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 font-weight-bold">
+                                    Tahun
+                                </div>
+                                <div class="col-md-3">
+                                    ${data.tahun}
                                 </div>
                             </div>
                         </li>
@@ -205,14 +311,100 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-4 font-weight-bold">
-                                    Komentar
+                                    Kepala Dokumen
                                 </div>
                                 <div class="col-md-8">
-                                    : ${data.komentar ?? '-'}
+                                    : ${data.head_dokument}
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 font-weight-bold">
+                                    Badan Dokumen
+                                </div>
+                                <div class="col-md-8">
+                                    : ${data.body_dokument}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="font-weight-bold my-4">
+                        Daftar Kinerja
+                    </div>
+                    ${data.kinerja === null || data.kinerja === undefined || data.kinerja.length === 0
+                        ? ``
+                        : `
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi
+                                        </th>
+                                        <th>Sasaran Strategis Individu / Rencana Hasil Kerja Individu</th>
+                                        <th>Indikator Kinerja Individu</th>
+                                        <th>Target / Satuan</th>
+                                        <th>tanggal Perubahan</th>
+                                        <th>Tanggal Pembuatan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${data.kinerja.map((item, index) =>
+                                        `
+                                            <tr>
+                                                <th scope="row">${index + 1}</th>
+                                                <td>${item.sasaran_strategis}</td>
+                                                <td>${item.sasaran_strategis_individu}</td>
+                                                <td>${item.indikator_kinerja_individu}</td>
+                                                <td>${item.target}</td>
+                                                <td>${item.created_at}</td>
+                                                <td>${item.updated_at}</td>
+                                            </tr>
+                                        `)
+                                        .join('')
+                                    }
+                                </tbody>
+                            </table>
+                        `
+                    }
+                    <div class="font-weight-bold my-4">
+                        Anggaran
+                    </div>
+                    ${data.pelaksanaan_anggaran === null || data.pelaksanaan_anggaran === undefined || data.pelaksanaan_anggaran.length === 0
+                        ? ``
+                        : `
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Program Kegiatan</th>
+                                        <th scope="col">jumlah_anggaran</th>
+                                        <th scope="col">Target Kegiatan</th>
+                                        <th scope="col">Tanggal Buar</th>
+                                        <th scope="col">Tanggal Perbaharui</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${data.pelaksanaan_anggaran.map((item, index) =>
+                                        `
+                                            <tr>
+                                                <th scope="row">${index + 1}</th>
+                                                <td>${item.program_kegiatan}</td>
+                                                <td>${item.jumlah_anggaran}</td>
+                                                <td>${item.target_kegiatan}</td>
+                                                <td>${item.created_at}</td>
+                                                <td>${item.updated_at}</td>
+                                            </tr>
+                                        `)
+                                        .join('')
+                                    }
+                                </tbody>
+                            </table>
+                        `
+                    }
+
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
@@ -238,6 +430,7 @@
                         </li>
                     </ul>
                 `;
+
                 modalContainerInfo.innerHTML = element;
             };
 

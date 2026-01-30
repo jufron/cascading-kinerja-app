@@ -131,9 +131,10 @@ Route::middleware('auth')->group(function () {
             ]);
 
     // ? catatan
-    Route::get('catatan', [CatatanController::class, 'index'])
-            ->name('catatan.index');
-
+    Route::controller(CatatanController::class)->group( function () {
+        Route::get('catatan', 'index')->name('catatan.index');
+        Route::get('catatan/{catatan}', 'show')->name('catatan.show');
+    });
     //* pegawai
 });
 
