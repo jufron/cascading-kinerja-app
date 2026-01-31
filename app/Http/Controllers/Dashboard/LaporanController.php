@@ -115,7 +115,7 @@ class LaporanController extends Controller
             'updated_at'     => $validationLaporan->updated_at,
         ], 200);
     }
-// DokumentKinerja $dokumentKinerja
+
     public function download (validationLaaporan $validationLaporan)
     {
         $dokumentKinerja = $validationLaporan->dokumentKinerja;
