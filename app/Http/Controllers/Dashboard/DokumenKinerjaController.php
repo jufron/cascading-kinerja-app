@@ -11,8 +11,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DokumentKinerjaRequest;
 use App\Models\Biodata;
 use App\Models\DokumentKinerja;
-use App\Models\Kinerja;
 use App\Models\PelaksanaanAnggaran;
+use App\Models\validationLaaporan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -46,40 +46,80 @@ class DokumenKinerjaController extends Controller
         ])->latest()->get();
     }
 
-    public function index () : View
+    public function index (Request $request) : View
     {
-        $dokumentKinerja = DokumentKinerja::with([
-            'userPertama' => function ($query) {
-                $query->select(['id', 'nip']);
-            },
-            'userPertama.biodata' => function ($query) {
-                $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
-            },
-            'userPertama.biodata.jabatan' => function ($query) {
-                $query->select(['id', 'nama_jabatan']);
-            },
-            'userKedua' => function ($query) {
-                $query->select(['id', 'nip']);
-            },
-            'userKedua.biodata' => function ($query) {
-                $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
-            },
-            'userKedua.biodata.jabatan' => function ($query) {
-                $query->select(['id', 'nama_jabatan']);
-            },
-        ])->latest()->get();
+        $dokumentKinerja = null;
+        if ($request->query('validasi')) {
+            $filterValidasiLaporan = $request->query('validasi');
 
-        return view('dashboard.admin.dokumen-kinerja.dokumen-kinerja', compact('dokumentKinerja'));
+            $dokumentKinerja = DokumentKinerja::with([
+                'userPertama' => function ($query) {
+                    $query->select(['id', 'nip']);
+                },
+                'userPertama.biodata' => function ($query) {
+                    $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
+                },
+                'userPertama.biodata.jabatan' => function ($query) {
+                    $query->select(['id', 'nama_jabatan']);
+                },
+                'userKedua' => function ($query) {
+                    $query->select(['id', 'nip']);
+                },
+                'userKedua.biodata' => function ($query) {
+                    $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
+                },
+                'userKedua.biodata.jabatan' => function ($query) {
+                    $query->select(['id', 'nama_jabatan']);
+                },
+                'validasiLaporan' => function ($query) {
+                    $query->select(['id', 'dokument_kinerja_id', 'status', 'komentar']);
+                }
+            ])
+                ->where('user_id_pihak_pertama', auth()->user()->id)
+                ->whereHas('validasiLaporan', function ($query) use ($filterValidasiLaporan) {
+                $query->where('status', $filterValidasiLaporan);
+            })->latest()->get();
+        } else {
+            $dokumentKinerja = DokumentKinerja::with([
+                'userPertama' => function ($query) {
+                    $query->select(['id', 'nip']);
+                },
+                'userPertama.biodata' => function ($query) {
+                    $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
+                },
+                'userPertama.biodata.jabatan' => function ($query) {
+                    $query->select(['id', 'nama_jabatan']);
+                },
+                'userKedua' => function ($query) {
+                    $query->select(['id', 'nip']);
+                },
+                'userKedua.biodata' => function ($query) {
+                    $query->select(['id', 'user_id', 'nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan']);
+                },
+                'userKedua.biodata.jabatan' => function ($query) {
+                    $query->select(['id', 'nama_jabatan']);
+                },
+            ])
+            ->where('user_id_pihak_pertama', auth()->user()->id)
+            ->latest()->get();
+        }
+
+        $status = collect([
+            'menunggu persetujuan',
+             'disetujui',
+             'tidak disetujui'
+        ]);
+        return view('dashboard.admin.dokumen-kinerja.dokumen-kinerja', compact('dokumentKinerja', 'status'));
     }
 
     public function search(Request $request): JsonResponse
     {
-        $search = $request->query('id');
+        $searchID = $request->query('id');
 
-        Log::info('id : ' . $search);
+        Log::info('id : ' . $searchID);
 
         $biodata = Biodata::with(['jabatan:id,nama_jabatan', 'user:id,nip'])
-        ->where('id', $search)
+        ->where('id', $searchID)
         ->latest()
         ->first();
 

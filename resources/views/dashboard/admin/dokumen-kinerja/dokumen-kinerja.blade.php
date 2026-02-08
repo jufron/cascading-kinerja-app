@@ -17,6 +17,20 @@
             </div>
             <div class="card-body">
                 <a href="{{ route('dokument-kinerja.create') }}" class="btn btn-success my-3">Buat Dokumen Baru</a>
+
+                <div class="my-3">
+                    <form method="GET" action="{{ route('dokument-kinerja.index') }}" class="d-inline">
+                        <select class="form-control d-inline-block w-auto mr-2" name="validasi">
+                            <option value="">Filter by Status Validasi</option>
+                            @foreach ($status as $s)
+                                <option value="{{ $s }}">{{ $s }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-primary mr-2">Filter</button>
+                        <a href="{{ route('dokument-kinerja.index') }}" class="btn btn-secondary">Reset</a>
+                    </form>
+                </div>
+
                 <div class="table-responsive">
                     <table
                         class="table table-bordered"
@@ -455,6 +469,8 @@
             };
 
             faq();
+
+
 
         </script>
     </x-slot:buttonOptional>

@@ -57,14 +57,6 @@
                                 <td>{{ $c->updated_at }}</td>
                                 <td>{{ $c->created_at }}</td>
                                 <td>
-                                    {{-- <form
-                                        id="banner-delete-form" action="{{ route('validasi-laporan.destroy', $vl) }}" method="post" class="d-flex">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form> --}}
                                     <a href="{{ route('laporan.download.word', $c) }}" class="btn btn-success btn-circle btn-sm">
                                         <i class="fas fa-download"></i>
                                     </a>
