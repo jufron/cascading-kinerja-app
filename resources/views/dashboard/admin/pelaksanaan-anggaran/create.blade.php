@@ -19,56 +19,7 @@
             <div class="card-body">
                 <form action="{{ route('pelaksanaan-anggaran.store', $dokumentKinerja) }}" method="POST">
                     @csrf
-                    {{--? 'kinerja_id', --}}
-                    <div class="col-md-6">
-                        <x-dashboard.subComponents.input-select name="kinerja_id" label="Nama Lengkap">
-                            <option value="pilih" selected disabled>Pilih</option>
-                            @foreach ($kinerja as $krj)
-                                <option value="{{ $krj->id }}" {{ old('kinerja_id') == $krj->id ? 'selected' : '' }}>
-                                    {{ $krj->sasaran_strategis }}
-                                </option>
-                            @endforeach
-                        </x-dashboard.subComponents.input-select>
-                    </div>
-                    <div class="row">
-                        {{-- ? sasaran_strategis --}}
-                        <div class="col-md-6">
-                            <x-dashboard.subComponents.input
-                                label="Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi"
-                                name="sasaran_strategis"
-                                type="text"
-                                disable="true"
-                            />
-                        </div>
-                        {{-- ? sasaran_strategis_individu --}}
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Sasaran Strategis Individu / Rencana Hasil Kerja Individu"
-                                name="sasaran_strategis_individu"
-                                type="text"
-                                disable="true"
-                            />
-                        </div>
-                        {{-- ? indikator_kinerja_individu --}}
-                        <div class="col-md-4">
-                            <x-dashboard.subComponents.input
-                                label="Indikator Kinerja Individu"
-                                name="indikator_kinerja_individu"
-                                type="text"
-                                disable="true"
-                            />
-                        </div>
-                        {{-- ? target --}}
-                        <div class="col-md-3">
-                            <x-dashboard.subComponents.input
-                                label="Target / Satuan"
-                                name="target"
-                                type="text"
-                                disable="true"
-                            />
-                        </div>
-                    </div>
-
+                    @dump($errors->all())
                     <div class="row">
                         {{-- ? program kegiatan --}}
                         <div class="col-md-5">
@@ -104,38 +55,7 @@
 
     {{-- todo javascript --}}
     <x-slot:buttonOptional>
-        <script>
-            const inputSasaranStrategis = document.getElementById('sasaran_strategis');
-            const inputSasaranStrategisIndividu = document.getElementById('sasaran_strategis_individu');
-            const inputIndikatorKinerjaIndividu = document.getElementById('indikator_kinerja_individu');
-            const inputTarget = document.getElementById('target');
 
-            const inputSelectKinerjaId = document.getElementById('kinerja_id');
-            const searchBiodata = `{{ route('pelaksanaan-anggaran.search', $dokumentKinerja) }}`;
-
-            inputSelectKinerjaId.addEventListener('change', async function () {
-                let userId = this.value;
-
-                if (!userId) return;
-
-                // fetch dari Laravel
-                let response = await fetch(`${searchBiodata}?id=${userId}`);
-                let result = await response.json();
-
-                // console.log(result);
-                const {
-                    indikator_kinerja_individu,
-                    sasaran_strategis,
-                    sasaran_strategis_individu,
-                    target
-                } = result.data;
-
-                inputSasaranStrategis.value = sasaran_strategis;
-                inputSasaranStrategisIndividu.value = sasaran_strategis_individu;
-                inputIndikatorKinerjaIndividu.value = indikator_kinerja_individu;
-                inputTarget.value = target
-            });
-        </script>
     </x-slot:buttonOptional>
     {{-- todo end javascript --}}
 </x-dashboard.layouts.base-dashboard>

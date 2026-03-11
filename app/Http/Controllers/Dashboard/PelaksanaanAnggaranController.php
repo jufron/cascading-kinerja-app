@@ -48,22 +48,20 @@ class PelaksanaanAnggaranController extends Controller
     public function create(DokumentKinerja $dokumentKinerja): View
     {
         return view('dashboard.admin.pelaksanaan-anggaran.create', [
-            'dokumentKinerja' => $dokumentKinerja,
-            'kinerja' => $dokumentKinerja->kinerja()->latest()->get(),
+            'dokumentKinerja' => $dokumentKinerja
         ]);
     }
 
     public function store(PelaksanaanAnggaranRequest $request, DokumentKinerja $dokumentKinerja): RedirectResponse
     {
         PelaksanaanAnggaran::create([
-            'kinerja_id' => $request->kinerja_id,
-            'program_kegiatan' => $request->program_kegiatan,
-            'jumlah_anggaran' => $request->jumlah_anggaran,
-            'target_kegiatan' => $request->target_kegiatan,
+            'dokument_kinerja_id'   => $dokumentKinerja->id,
+            'program_kegiatan'      => $request->program_kegiatan,
+            'jumlah_anggaran'       => $request->jumlah_anggaran,
+            'target_kegiatan'       => $request->target_kegiatan,
         ]);
 
         alert('Berhasil', 'Berhasil Mendambahkan Data', 'success');
-
         return redirect()->route('kinerja.index', $dokumentKinerja);
     }
 
@@ -87,14 +85,12 @@ class PelaksanaanAnggaranController extends Controller
         return view('dashboard.admin.pelaksanaan-anggaran.edit', [
             'pelaksanaanAnggaran'   => $pelaksanaanAnggaran,
             'dokumentKinerja'       => $dokumentKinerja,
-            'kinerja'               => $dokumentKinerja->kinerja()->latest()->get()
         ]);
     }
 
     public function update(PelaksanaanAnggaranRequest $request, DokumentKinerja $dokumentKinerja, PelaksanaanAnggaran $pelaksanaanAnggaran): RedirectResponse
     {
         $pelaksanaanAnggaran->update([
-            'kinerja_id'            => $request->kinerja_id,
             'program_kegiatan'      => $request->program_kegiatan,
             'jumlah_anggaran'       => $request->jumlah_anggaran,
             'target_kegiatan'       => $request->target_kegiatan,

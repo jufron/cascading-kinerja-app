@@ -35,13 +35,18 @@ class KinerjaController extends Controller
             'userKedua.biodata.jabatan' => function ($query) {
                 $query->select(['id', 'nama_jabatan']);
             },
+            'kinerja' => function ($query) {
+                $query->select(['id', 'dokument_kinerja_id', 'sasaran_strategis', 'sasaran_strategis_individu', 'indikator_kinerja_individu', 'target']);
+            },
+            'pelaksanaanAnggaran' => function ($query) {
+                $query->select(['id', 'dokument_kinerja_id', 'program_kegiatan', 'jumlah_anggaran','target_kegiatan']);
+            }
         ])->latest()->get();
 
         // * kinerja model
-        $kinerja = Kinerja::with(['dokumentKinerja:id'])->where('dokument_kinerja_id', $dokumentKinerja->id)->latest()->get();
-
+        $kinerja = $dokumentKinerja->kinerja()->latest()->get();
         // * pelaksanaan anggaran model
-        $pelaksanaanAnggaran = PelaksanaanAnggaran::query()->whereIn('kinerja_id', $kinerja->pluck('id'))->latest()->get();
+        $pelaksanaanAnggaran = $dokumentKinerja->pelaksanaanAnggaran()->latest()->get();
 
         return view('dashboard.admin.kinerja.kinerja', [
             'dokumentKinerja'       => $dokumentKinerja,

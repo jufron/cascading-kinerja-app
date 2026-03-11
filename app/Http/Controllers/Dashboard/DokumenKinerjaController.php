@@ -12,7 +12,6 @@ use App\Http\Requests\DokumentKinerjaRequest;
 use App\Models\Biodata;
 use App\Models\DokumentKinerja;
 use App\Models\PelaksanaanAnggaran;
-use App\Models\validationLaaporan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -200,6 +199,9 @@ class DokumenKinerjaController extends Controller
             'kinerja' => function ($query) {
                 $query->select(['dokument_kinerja_id', 'sasaran_strategis', 'sasaran_strategis_individu', 'indikator_kinerja_individu', 'target']);
             },
+            'pelaksanaanAnggaran'   => function ($query) {
+                $query->select(['id', 'dokument_kinerja_id', 'program_kegiatan', 'jumlah_anggaran', 'target_kegiatan']);
+            }
         ])->latest()->get();
 
         return response()->json([
@@ -220,7 +222,7 @@ class DokumenKinerjaController extends Controller
             'pangkat_golongan_user_kedua'   => $dokumentKinerja->userKedua->biodata->pangkat_golongan,
             'nip_user_kedua'                => $dokumentKinerja->userKedua->nip,
             'kinerja'                       => $dokumentKinerja->kinerja()->latest()->get(),
-            'pelaksanaan_anggaran'          => PelaksanaanAnggaran::query()->whereIn('kinerja_id', $dokumentKinerja->kinerja()->pluck('id'))->latest()->get(),
+            'pelaksanaan_anggaran'          => $dokumentKinerja->pelaksanaanAnggaran()->latest()->get(),
             'created_at'                    => $dokumentKinerja->created_at,
             'updated_at'                    => $dokumentKinerja->updated_at,
         ], 200);
@@ -282,10 +284,7 @@ class DokumenKinerjaController extends Controller
         // ? query data dulu
         $doctKinerja = $dokumentKinerja->kinerja()->latest()->get();
 
-        $pelaksanaanAnggaran = PelaksanaanAnggaran::query()
-                ->whereIn('kinerja_id', $doctKinerja->pluck('id'))
-                ->latest()
-                ->get();
+        $pelaksanaanAnggaran = $dokumentKinerja->pelaksanaanAnggaran()->latest()->get();
 
         $template = new TemplateProcessor(
             storage_path('app/templates/laporan.docx')

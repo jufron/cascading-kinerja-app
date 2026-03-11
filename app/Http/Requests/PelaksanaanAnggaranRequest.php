@@ -22,7 +22,6 @@ class PelaksanaanAnggaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kinerja_id'            => ['required','integer','exists:kinerja,id'],
             'program_kegiatan'      => ['required','string','max:255'],
             'jumlah_anggaran'       => ['required','numeric','min:0'],
             'target_kegiatan'       => ['required','string','max:255'],

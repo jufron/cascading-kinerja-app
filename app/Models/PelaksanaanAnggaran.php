@@ -16,7 +16,7 @@ class PelaksanaanAnggaran extends Model
     protected $table = 'pelaksanaan_anggaran';
 
     protected $fillable = [
-        'kinerja_id',
+        'dokument_kinerja_id',
         'program_kegiatan',
         'jumlah_anggaran',
         'target_kegiatan'
@@ -29,8 +29,8 @@ class PelaksanaanAnggaran extends Model
         );
     }
 
-    public function kinerja () : BelongsTo
+    public function dokumenKinerja () : BelongsTo
     {
-        return $this->belongsTo(Kinerja::class);
+        return $this->belongsTo(DokumentKinerja::class);
     }
 }
