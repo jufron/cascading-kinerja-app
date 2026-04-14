@@ -19,7 +19,6 @@
             <div class="card-body">
                 <form action="{{ route('pelaksanaan-anggaran.store', $dokumentKinerja) }}" method="POST">
                     @csrf
-                    @dump($errors->all())
                     <div class="row">
                         {{-- ? program kegiatan --}}
                         <div class="col-md-5">
