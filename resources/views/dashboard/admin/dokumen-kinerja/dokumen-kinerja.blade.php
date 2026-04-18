@@ -73,10 +73,10 @@
                                 <td>{{ $dk->updated_at }}</td>
                                 <td>{{ $dk->created_at }}</td>
                                 <td>
-                                    <form
+                                    {{-- <form
                                         id="banner-delete-form" action="{{ route('dokument-kinerja.destroy', $dk) }}" method="post" class="d-flex">
                                         @method('delete')
-                                        @csrf
+                                        @csrf --}}
                                         <a href="{{ route('dokument-kinerja.download.word', $dk) }}" class="btn btn-success btn-circle btn-sm">
                                             <i class="fas fa-download"></i>
                                         </a>
@@ -96,10 +96,10 @@
                                         <a href="{{ route('dokument-kinerja.edit', $dk) }}" class="btn btn-warning btn-circle btn-sm">
                                             <i class="fas fa-exclamation-triangle"></i>
                                         </a>
-                                        <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">
+                                        {{-- <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">
                                             <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                                        </button> --}}
+                                    {{-- </form> --}}
                                 </td>
                             </tr>
                             @endforeach

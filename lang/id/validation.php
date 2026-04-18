@@ -275,7 +275,7 @@ return [
         'type'                     => 'jenis',
         'updated_at'               => 'diperbarui pada',
         'user'                     => 'pengguna',
-        'username'                 => 'nama pengguna',
+        'username'                 => 'username',
         'value'                    => 'nilai',
         'winner'                   => 'pemenang',
         'work'                     => 'pekerjaan',
