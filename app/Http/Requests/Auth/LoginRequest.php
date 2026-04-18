@@ -27,7 +27,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nip'       => ['required', 'string'],
+            'nip'       => ['required', 'string', 'exists:users,nip'],
             'password' => ['required', 'string'],
         ];
     }
@@ -81,5 +81,19 @@ class LoginRequest extends FormRequest
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->string('nip')).'|'.$this->ip());
+    }
+
+        /**
+     * Custom pesan validasi
+     */
+    public function messages(): array
+    {
+        return [
+            'nip.required'      => 'NIP wajib diisi.',
+            'nip.string'        => 'NIP harus berupa teks.',
+            'nip.exists'        => 'NIP yang dimasukan tidak sesuai dengan identitas data kami.',
+            'password.required' => 'Password wajib diisi.',
+            'password.string'   => 'Password harus berupa teks.',
+        ];
     }
 }
