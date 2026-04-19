@@ -14,6 +14,16 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            animation: {
+                // 'marquee' adalah nama animasinya, durasi 10 detik, linear, dan berulang selamanya
+                marquee: 'marquee 30s linear infinite',
+            },
+            keyframes: {
+                marquee: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' },
+                },
+            },
         },
     },
 

@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DcOrQ2qn.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-DcOrQ2qn.css') }}"> --}}
     <script src="{{ asset('build/assets/app-kGY04szw.js') }}"></script>
     <style>
         body {
@@ -24,6 +24,36 @@
             /* background: url('gambar pariwisata.PNG') center/cover no-repeat; */
             filter: blur(6px);
             z-index: -1;
+        }
+
+        .marquee-wrapper {
+            position: relative;
+            display: flex;
+            overflow: hidden; /* Menyembunyikan teks yang keluar batas */
+            width: 100%;
+            padding: 0.5rem 0;
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            min-width: 100%;
+            /* Jalankan animasi ke kanan */
+            animation: scroll-right 20s linear infinite;
+        }
+
+        @keyframes scroll-right {
+            0% {
+                transform: translateX(-100%); /* Mulai dari posisi kiri yang tersembunyi */
+            }
+            100% {
+                transform: translateX(0%); /* Berakhir tepat saat teks kedua menempati posisi teks pertama */
+            }
+        }
+
+        /* Agar tidak ada celah, kita duplikasi teksnya di dalam satu baris */
+        .text-item {
+            padding: 0 2rem; /* Jarak antar kalimat */
         }
     </style>
 </head>
@@ -57,6 +87,18 @@
                 <p class="text-gray-600 text-lg">
                     Platform Cascading Kinerja membantu Anda menyusun target, memantau progres, dan mengevaluasi hasil dengan alur kerja yang sederhana, cepat, dan akurat.
                 </p>
+
+                <div class="marquee-wrapper">
+                    <div class="marquee-content">
+                        <p class="text-lg text-item">
+                            DINAS PARIWISATA DAN EKONOMI KREATIF PROVINSI NTT
+                        </p>
+                        <p class="text-lg text-item">
+                            DINAS PARIWISATA DAN EKONOMI KREATIF PROVINSI NTT
+                        </p>
+                    </div>
+                </div>
+
                 <div class="pt-5">
                     <a href="{{ route('login') }}" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">Login</a>
                 </div>
