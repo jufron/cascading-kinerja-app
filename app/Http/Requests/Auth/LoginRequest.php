@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'nip' => trans('NIP yang dimasukin salah'),
+                'nip' => trans('NIP yang dimasukin salah.'),
             ]);
         }
 
@@ -91,7 +91,7 @@ class LoginRequest extends FormRequest
         return [
             'nip.required'      => 'NIP wajib diisi.',
             'nip.string'        => 'NIP harus berupa teks.',
-            'nip.exists'        => 'NIP yang dimasukan tidak sesuai dengan identitas data kami.',
+            'nip.exists'        => 'NIP yang dimasukin salah.',
             'password.required' => 'Password wajib diisi.',
             'password.string'   => 'Password harus berupa teks.',
         ];
