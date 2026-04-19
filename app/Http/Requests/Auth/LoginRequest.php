@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'nip'       => ['required', 'string', 'exists:users,nip'],
-            'password' => ['required', 'string'],
+            'password'  => ['required', 'string'],
         ];
     }
 
@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'nip' => trans('auth.failed'),
+                'nip' => trans('data yang dimasukin tidak sesuai dengan identitas data kami'),
             ]);
         }
 
