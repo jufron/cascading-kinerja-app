@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'nip' => trans('data yang dimasukin tidak sesuai dengan identitas data kami'),
+                'nip' => trans('data yang dimasukin salah'),
             ]);
         }
 

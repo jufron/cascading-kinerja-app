@@ -29,6 +29,9 @@
                                     @error('nip')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
+                                    @error('password')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-4" viewBox="0 0 24 24">
@@ -49,9 +52,6 @@
                                         class="w-full text-sm text-slate-900 border @error('email') border-red-500 bg-red-50 @else border-slate-300 @enderror pl-4 pr-10 py-3 rounded-lg outline-blue-600"
                                         placeholder="Masukan password"
                                     />
-                                    @error('password')
-                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
                                 </div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-4 cursor-pointer" viewBox="0 0 128 128">
