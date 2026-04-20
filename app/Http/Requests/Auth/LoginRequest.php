@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class LoginRequest extends FormRequest
 {
@@ -44,10 +46,26 @@ class LoginRequest extends FormRequest
         if (! Auth::attempt($this->only('nip', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
-            throw ValidationException::withMessages([
-                'nip'       => trans('NIP yang dimasukin salah.'),
-                'password'  => trans('Password yang dimasukin salah.'),
-            ]);
+            // throw ValidationException::withMessages([
+            //     'nip'       => trans('NIP yang dimasukin salah.'),
+            //     'password'  => trans('Password yang dimasukin salah.'),
+            // ]);
+
+            // 1. cek apakah email ada
+            $user = User::where('nip', $this->nip)->first();
+
+            if (!$user) {
+                throw ValidationException::withMessages([
+                    'nip'       => trans('NIP yang dimasukin salah.'),
+                ]);
+            }
+
+            // 2. cek password
+            if (!Hash::check($this->password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'password'  => trans('Password yang dimasukin salah.'),
+                ]);
+            }
         }
 
         RateLimiter::clear($this->throttleKey());
