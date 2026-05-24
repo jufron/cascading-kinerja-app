@@ -50,18 +50,6 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Dokumen Kinerja Tipe</th>
-                                <th>Pihak Pertama</th>
-                                <th>Pihak Kedua</th>
-                                <th>Tahun</th>
-                                <th>tanggal Perubahan</th>
-                                <th>Tanggal Pembuatan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach ($dokumentKinerja as $dk)
                             <tr>

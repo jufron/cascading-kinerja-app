@@ -36,17 +36,6 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Pimpinan</th>
-                                <th>Nama Pegawai</th>
-                                <th>file</th>
-                                <th>tanggal Perubahan</th>
-                                <th>Tanggal Pembuatan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach ($laporanPegawai as $lp)
                             <tr>

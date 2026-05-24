@@ -36,17 +36,6 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Tipe Kinerja</th>
-                                <th>Status</th>
-                                <th>Tahun</th>
-                                <th>tanggal Perubahan</th>
-                                <th>Tanggal Pembuatan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach ($laporan as $c)
                             <tr>

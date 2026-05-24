@@ -37,18 +37,6 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Dokumen Kinerja Tipe</th>
-                                <th>status</th>
-                                <th>tahun</th>
-                                <th>komentar</th>
-                                <th>tanggal Perubahan</th>
-                                <th>Tanggal Pembuatan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach ($validationLaporan as $dk)
                             <tr>

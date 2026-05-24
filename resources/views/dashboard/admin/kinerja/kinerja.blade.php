@@ -94,19 +94,6 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Sasaran Strategis Kepala Dinas/ Indikator Kinerja Kepala Dinas Yang Diintervensi
-                                </th>
-                                <th>Sasaran Strategis Individu / Rencana Hasil Kerja Individu</th>
-                                <th>Indikator Kinerja Individu</th>
-                                <th>Target / Satuan</th>
-                                <th>tanggal Perubahan</th>
-                                <th>Tanggal Pembuatan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach ($kinerja as $kj)
                                 <tr>
