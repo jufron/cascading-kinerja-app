@@ -87,7 +87,7 @@ class CatatanController extends Controller
             'pangkat_golongan_user_kedua'   => $catatan->dokumentKinerja->userKedua->biodata->pangkat_golongan,
             'nip_user_kedua'                => $catatan->dokumentKinerja->userKedua->nip,
             'kinerja'                       => $catatan->dokumentKinerja->kinerja()->latest()->get(),
-            'pelaksanaan_anggaran'          => PelaksanaanAnggaran::query()->whereIn('kinerja_id', $catatan->dokumentKinerja->kinerja()->pluck('id'))->latest()->get(),
+            'pelaksanaan_anggaran'          => PelaksanaanAnggaran::query()->whereIn('dokument_kinerja_id', $catatan->dokumentKinerja->kinerja()->pluck('id'))->latest()->get(),
             'created_at'                    => $catatan->created_at,
             'updated_at'                    => $catatan->updated_at,
         ], 200);
