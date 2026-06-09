@@ -96,7 +96,7 @@ class LaporanController extends Controller
             'user_pertama_biodata_nama_lengkap'         => $validationLaporan->dokumentKinerja->userPertama->biodata->nama_lengkap,
             'user_pertama_biodata_jabatan'              => $validationLaporan->dokumentKinerja->userPertama->biodata->jabatan->nama_jabatan,
             'user_pertama_biodata_bidang'               => $validationLaporan->dokumentKinerja->userPertama->biodata->bidang,
-            'user_pertama_biodata_pangkat_golongan'     => $validationLaporan->dokumentKinerja->userPertama->biodata->golongan,
+            'user_pertama_biodata_pangkat_golongan'     => $validationLaporan->dokumentKinerja->userPertama->biodata->pangkat_golongan,
             'user_pertama_biodata_nomor_telepon'        => $validationLaporan->dokumentKinerja->userPertama->biodata->nomor_telepon,
 
             'user_kedua_name'     => $validationLaporan->dokumentKinerja->userKedua->name,
@@ -106,7 +106,7 @@ class LaporanController extends Controller
             'user_kedua_biodata_nama_lengkap'         => $validationLaporan->dokumentKinerja->userKedua->biodata->nama_lengkap,
             'user_kedua_biodata_jabatan'              => $validationLaporan->dokumentKinerja->userKedua->biodata->jabatan->nama_jabatan,
             'user_kedua_biodata_bidang'               => $validationLaporan->dokumentKinerja->userKedua->biodata->bidang,
-            'user_kedua_biodata_pangkat_golongan'     => $validationLaporan->dokumentKinerja->userKedua->biodata->golongan,
+            'user_kedua_biodata_pangkat_golongan'     => $validationLaporan->dokumentKinerja->userKedua->biodata->pangkat_golongan,
             'user_kedua_biodata_nomor_telepon'        => $validationLaporan->dokumentKinerja->userKedua->biodata->nomor_telepon,
 
             'status'         => $validationLaporan->status,

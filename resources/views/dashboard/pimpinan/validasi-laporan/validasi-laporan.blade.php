@@ -168,7 +168,7 @@
             };
 
             const renderErrorMessage = (message, statusCode) => {
-                const modalContainerInfo = document.querySelector('#modal-banner-manajement-container-info');
+                const modalContainerInfo = document.querySelector('#modal-banner-container-info');
 
                 modalContainerInfo.innerHTML = `
                     <h1 class="text-center mt-3">${statusCode}</h1>
@@ -188,7 +188,7 @@
                                     Tipe Dokument Kinerja
                                 </div>
                                 <div class="col-md-3">
-                                    : asd
+                                    : ${data.jenis_kinerja}
                                 </div>
                             </div>
                         </li>
@@ -200,13 +200,13 @@
                                     Pihak Pertama
                                 </div>
                                 <div class="col-md-3">
-                                    : asd
+                                    : ${data.user_pertama_biodata_nama_lengkap ?? data.user_pertama_name}
                                 </div>
                                 <div class="col-md-3 font-weight-bold">
                                     Pihak Kedua
                                 </div>
                                 <div class="col-md-3">
-                                    : asd
+                                    : ${data.user_kedua_biodata_nama_lengkap ?? data.user_kedua_name}
                                 </div>
                             </div>
                         </li>
@@ -218,13 +218,13 @@
                                     NIP
                                 </div>
                                 <div class="col-md-3">
-                                    : asd
+                                    : ${data.user_pertama_nip}
                                 </div>
                                 <div class="col-md-3 font-weight-bold">
                                     NIP
                                 </div>
                                 <div class="col-md-3">
-                                    : asd
+                                    : ${data.user_kedua_nip}
                                 </div>
                             </div>
                         </li>
@@ -236,7 +236,7 @@
                                     Tahun
                                 </div>
                                 <div class="col-md-3">
-                                    : asd
+                                    : ${data.tahun}
                                 </div>
                             </div>
                         </li>

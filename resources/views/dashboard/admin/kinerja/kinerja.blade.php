@@ -155,17 +155,6 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Program/Kegiatan</th>
-                                <th>Jumlah Anggaran (Rp)</th>
-                                <th>Target/Realisasi</th>
-                                <th>tanggal Perubahan</th>
-                                <th>Tanggal Pembuatan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach ($pelaksanaanAnggaran as $pa)
                                 <tr>
