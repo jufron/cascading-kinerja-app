@@ -78,6 +78,7 @@ class UserSeeder extends Seeder
 
         $userPimpinanNoldy = User::query()->whereName('noldy')->get()->first();
         $userPimpinanNoldy->assignRole('pimpinan');
+        $userPimpinanNoldy->givePermissionTo('can-access-report-pegawai');
 
         $userPimpinanAgustinus = User::query()->whereName('agustinus')->get()->first();
         $userPimpinanAgustinus->assignRole('pimpinan');

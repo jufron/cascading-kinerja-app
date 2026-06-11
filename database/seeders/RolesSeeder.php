@@ -18,7 +18,7 @@ class RolesSeeder extends Seeder
             ['name' => 'pimpinan'],
             ['name' => 'pegawai'],
         ])->each( function ($item) {
-            Role::create($item);
+            Role::firstOrCreate($item);
         });
     }
 }

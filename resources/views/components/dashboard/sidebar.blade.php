@@ -73,12 +73,14 @@
             <span>Dokumen Kinerja</span>
         </a>
     </li>
+    @can('can-access-report-pegawai')
     <li class="nav-item @if (request()->routeIs('laporan-pegaai.*')) active @endif">
         <a class="nav-link" href="{{ route('laporan-pegaai.index') }}">
             <i class="fas fa-chart-line"></i>
             <span>Laporan Pegawai</span>
         </a>
     </li>
+    @endcan
     <li class="nav-item @if (request()->routeIs('validasi-laporan.*')) active @endif">
         <a class="nav-link" href="{{ route('validasi-laporan.index') }}">
             <i class="fas fa-chart-line"></i>

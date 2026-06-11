@@ -103,20 +103,22 @@ Route::middleware('auth')->group(function () {
             ]);
 
     //* pimpinan
-    Route::get('laporan-pegawai/download{laporanPegawai}', [LaporanPegawaiController::class, 'download'])
-            ->name('laporan-pegawai.download');
-    Route::resource('laporan-pegawai', LaporanPegawaiController::class)
-            ->except(['show'])
-            ->parameters(['laporan-pegawai' => 'laporanPegawai'])
-            ->names([
-                'index'         => 'laporan-pegaai.index',
-                'create'        => 'laporan-pegaai.create',
-                'store'         => 'laporan-pegaai.store',
-                'show'          => 'laporan-pegaai.show',
-                'edit'          => 'laporan-pegaai.edit',
-                'update'        => 'laporan-pegaai.update',
-                'destroy'       => 'laporan-pegaai.destroy',
-            ]);
+    Route::middleware('can:can-access-report-pegawai')->group(function () {
+        Route::get('laporan-pegawai/download{laporanPegawai}', [LaporanPegawaiController::class, 'download'])
+                ->name('laporan-pegawai.download');
+        Route::resource('laporan-pegawai', LaporanPegawaiController::class)
+                ->except(['show'])
+                ->parameters(['laporan-pegawai' => 'laporanPegawai'])
+                ->names([
+                    'index'         => 'laporan-pegaai.index',
+                    'create'        => 'laporan-pegaai.create',
+                    'store'         => 'laporan-pegaai.store',
+                    'show'          => 'laporan-pegaai.show',
+                    'edit'          => 'laporan-pegaai.edit',
+                    'update'        => 'laporan-pegaai.update',
+                    'destroy'       => 'laporan-pegaai.destroy',
+                ]);
+    });
     // ? validasi laporan
     Route::resource('validasi-laporan', ValidationLaporanController::class)
             ->except(['create', 'store', 'destroy'])
