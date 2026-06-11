@@ -13,5 +13,6 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         Permission::firstOrCreate(['name' => 'can-create-report-pegawai']);
+        Permission::firstOrCreate(['name' => 'can-access-report-pegawai']);
     }
 }
