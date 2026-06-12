@@ -110,13 +110,13 @@ Route::middleware('auth')->group(function () {
                 ->except(['show'])
                 ->parameters(['laporan-pegawai' => 'laporanPegawai'])
                 ->names([
-                    'index'         => 'laporan-pegaai.index',
-                    'create'        => 'laporan-pegaai.create',
-                    'store'         => 'laporan-pegaai.store',
-                    'show'          => 'laporan-pegaai.show',
-                    'edit'          => 'laporan-pegaai.edit',
-                    'update'        => 'laporan-pegaai.update',
-                    'destroy'       => 'laporan-pegaai.destroy',
+                    'index'         => 'laporan-pegawai.index',
+                    'create'        => 'laporan-pegawai.create',
+                    'store'         => 'laporan-pegawai.store',
+                    'show'          => 'laporan-pegawai.show',
+                    'edit'          => 'laporan-pegawai.edit',
+                    'update'        => 'laporan-pegawai.update',
+                    'destroy'       => 'laporan-pegawai.destroy',
                 ]);
     });
     // ? validasi laporan

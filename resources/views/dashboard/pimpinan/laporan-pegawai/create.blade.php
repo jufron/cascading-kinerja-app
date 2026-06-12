@@ -17,7 +17,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Tambah Laporan</h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('laporan-pegaai.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('laporan-pegawai.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-4 mb-4">
                           <div class="custom-file">

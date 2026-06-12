@@ -16,7 +16,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Daftar Laporan Pegawai</h6>
             </div>
             <div class="card-body">
-                <a href="{{ route('laporan-pegaai.create') }}" class="btn btn-success my-3">Tambah Laporan</a>
+                <a href="{{ route('laporan-pegawai.create') }}" class="btn btn-success my-3">Tambah Laporan</a>
 
                 <div class="table-responsive">
                     <table
@@ -47,20 +47,20 @@
                                 <td>{{ $lp->created_at }}</td>
                                 <td>
                                     <form
-                                        id="banner-delete-form" action="{{ route('laporan-pegaai.destroy', $lp) }}" method="post" class="d-flex">
+                                        id="banner-delete-form" action="{{ route('laporan-pegawai.destroy', $lp) }}" method="post" class="d-flex">
                                         @method('delete')
                                         @csrf
-                                        <button
+                                        {{-- <button
                                             id="button-banner-info"
                                             type="button"
                                             class="btn btn-info btn-circle btn-sm"
                                             data-toggle="modal"
                                             data-target="#faq"
-                                            data-url="{{ route('laporan-pegaai.show', $lp) }}"
+                                            data-url="{{ route('laporan-pegawai.show', $lp) }}"
                                             >
                                             <i class="fas fa-info-circle"></i>
-                                        </button>
-                                        <a href="{{ route('laporan-pegaai.edit', $lp) }}" class="btn btn-warning btn-circle btn-sm">
+                                        </button> --}}
+                                        <a href="{{ route('laporan-pegawai.edit', $lp) }}" class="btn btn-warning btn-circle btn-sm">
                                             <i class="fas fa-exclamation-triangle"></i>
                                         </a>
                                         <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">

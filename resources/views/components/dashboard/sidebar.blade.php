@@ -74,8 +74,8 @@
         </a>
     </li>
     @can('can-access-report-pegawai')
-    <li class="nav-item @if (request()->routeIs('laporan-pegaai.*')) active @endif">
-        <a class="nav-link" href="{{ route('laporan-pegaai.index') }}">
+    <li class="nav-item @if (request()->routeIs('laporan-pegawai.*')) active @endif">
+        <a class="nav-link" href="{{ route('laporan-pegawai.index') }}">
             <i class="fas fa-chart-line"></i>
             <span>Laporan Pegawai</span>
         </a>

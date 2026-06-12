@@ -37,7 +37,7 @@ class LaporanPegawaiController extends Controller
         ]);
 
         alert('Berhasil','Berhasil Mendambahkan Data', 'success');
-        return redirect()->route('laporan-pegaai.index');
+        return redirect()->route('laporan-pegawai.index');
     }
 
     public function show (LaporanPegawai $laporanPegawai) : JsonResponse
@@ -74,7 +74,7 @@ class LaporanPegawaiController extends Controller
         ]);
 
         alert('Berhasil','Berhasil Memperbaharui Data', 'success');
-        return redirect()->route('laporan-pegaai.index');
+        return redirect()->route('laporan-pegawai.index');
     }
 
     public function destroy (LaporanPegawai $laporanPegawai) : RedirectResponse
@@ -86,7 +86,7 @@ class LaporanPegawaiController extends Controller
         }
         $laporanPegawai->delete();
         alert('Berhasil','Berhasil Memperbaharui Data', 'success');
-        return redirect()->route('laporan-pegaai.index');
+        return redirect()->route('laporan-pegawai.index');
     }
 
     public function download (LaporanPegawai $laporanPegawai)

@@ -17,7 +17,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Ubah Laporan</h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('laporan-pegaai.update', $laporanPegawai) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('laporan-pegawai.update', $laporanPegawai) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="col-md-4 mb-4">

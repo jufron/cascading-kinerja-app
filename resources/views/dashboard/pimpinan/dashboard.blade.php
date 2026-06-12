@@ -240,7 +240,7 @@
                                 </div>
                                 @can('can-access-report-pegawai')
                                 <div class="col-md-3 col-sm-6 mb-3">
-                                    <a href="{{ route('laporan-pegaai.index') }}" class="card quick-action-card p-3 h-100 text-center">
+                                    <a href="{{ route('laporan-pegawai.index') }}" class="card quick-action-card p-3 h-100 text-center">
                                         <div class="mb-2 text-indigo" style="font-size: 1.75rem;"><i class="fa-solid fa-file-invoice"></i></div>
                                         <div class="font-weight-bold small">Laporan Pegawai (Eksklusif)</div>
                                     </a>
