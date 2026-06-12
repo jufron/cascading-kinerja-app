@@ -28,16 +28,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <x-dashboard.subComponents.input-select name="pegawai_user_id" label="Nama Pegawai">
-                            @foreach ($user as $u)
-                                <option selected disabled>Pilih</option>
-                                <option value="{{ $u->id }}" {{ old('pegawai_user_id') == $u->id ? 'selected' : '' }}>
-                                    {{ $u->biodata->nama_lengkap }}
-                                </option>
-                            @endforeach
-                        </x-dashboard.subComponents.input-select>
-                    </div>
+
                     <button class="btn btn-success">Simpan</button>
                 </form>
             </div>

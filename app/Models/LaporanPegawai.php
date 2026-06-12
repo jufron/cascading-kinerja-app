@@ -13,18 +13,6 @@ class LaporanPegawai extends Model
     protected $table = 'laporan_pegawai';
 
     protected $fillable = [
-        'user_id',
-        'pegawai_user_id',
         'nama_file'
     ];
-
-    public function user () : BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function pegawaiUser () : BelongsTo
-    {
-        return $this->belongsTo(User::class, 'pegawai_user_id');
-    }
 }

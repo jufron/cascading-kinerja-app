@@ -22,7 +22,6 @@ class LaporanPegawaiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pegawai_user_id'       => ['required', 'integer', 'exists:users,id'],
             'nama_file'             => [$this->isMethod('patch') || $this->isMethod('put')
                                         ? 'nullable'
                                         : 'required',

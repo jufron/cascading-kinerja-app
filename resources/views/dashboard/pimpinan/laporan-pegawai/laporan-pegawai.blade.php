@@ -28,8 +28,6 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Pimpinan</th>
-                                <th>Nama Pegawai</th>
                                 <th>file</th>
                                 <th>tanggal Perubahan</th>
                                 <th>Tanggal Pembuatan</th>
@@ -40,8 +38,6 @@
                             @foreach ($laporanPegawai as $lp)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $lp->user->biodata->nama_lengkap }}</td>
-                                <td>{{ $lp->pegawaiUser->biodata->nama_lengkap }}</td>
                                 <td>
                                     <a href="{{ route('laporan-pegawai.download', $lp) }}" class="btn btn-info btn-circle btn-sm">
                                         <i class="fa-solid fa-download"></i>
@@ -54,7 +50,7 @@
                                         id="banner-delete-form" action="{{ route('laporan-pegaai.destroy', $lp) }}" method="post" class="d-flex">
                                         @method('delete')
                                         @csrf
-                                        {{-- <button
+                                        <button
                                             id="button-banner-info"
                                             type="button"
                                             class="btn btn-info btn-circle btn-sm"
@@ -63,7 +59,7 @@
                                             data-url="{{ route('laporan-pegaai.show', $lp) }}"
                                             >
                                             <i class="fas fa-info-circle"></i>
-                                        </button> --}}
+                                        </button>
                                         <a href="{{ route('laporan-pegaai.edit', $lp) }}" class="btn btn-warning btn-circle btn-sm">
                                             <i class="fas fa-exclamation-triangle"></i>
                                         </a>
@@ -184,94 +180,10 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-4 font-weight-bold">
-                                    Username
+                                    Nama File
                                 </div>
                                 <div class="col-md-8">
-                                    : ${data.username}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    NIP
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.nip}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Email
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.email}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Nama Lengkap
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.nama_lengkap}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Jabatan
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.nama_jabatan}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Bidang
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.bidang}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Pangkat Golongan
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.pangkat_golongan}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-4 font-weight-bold">
-                                    Nomor Telepon
-                                </div>
-                                <div class="col-md-8">
-                                    : ${data.nomor_telepon}
+                                    : ${data.nama_file}
                                 </div>
                             </div>
                         </li>

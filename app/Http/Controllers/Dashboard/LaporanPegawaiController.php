@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Models\LaporanPegawai;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LaporanPegawaiRequest;
@@ -16,35 +17,13 @@ class LaporanPegawaiController extends Controller
     public function index () : View
     {
         return view('dashboard.pimpinan.laporan-pegawai.laporan-pegawai', [
-            'laporanPegawai'    => LaporanPegawai::with([
-                'user'                  => function ($query) {
-                    $query->select(['id', 'nip', 'name']);
-                },
-                'user.biodata'          => function ($query) {
-                    $query->select(['id', 'nama_lengkap', 'user_id']);
-                },
-                'pegawaiUser'           => function ($query) {
-                    $query->select(['id', 'nip', 'name']);
-                },
-                'pegawaiUser.biodata'   => function ($query) {
-                    $query->select(['id', 'nama_lengkap', 'user_id']);
-                }
-            ])->latest()->get()
+            'laporanPegawai'    => LaporanPegawai::latest()->get()
         ]);
     }
 
     public function create () : View
     {
-        return view('dashboard.pimpinan.laporan-pegawai.create', [
-            'user'  => User::with([
-                'biodata'           => function ($query) {
-                    $query->select('id', 'user_id', 'nama_lengkap', 'jabatan_id', 'nomor_telepon');
-                },
-                'biodata.jabatan'   => function ($query) {
-                    $query->select('id', 'nama_jabatan');
-                }
-            ])->role('pegawai')->latest()->get()
-        ]);
+        return view('dashboard.pimpinan.laporan-pegawai.create');
     }
 
     public function store (LaporanPegawaiRequest $request) : RedirectResponse
@@ -54,8 +33,6 @@ class LaporanPegawaiController extends Controller
             $nama_file = $request->file('nama_file')->store('laporan-pegawai', 'public');
         }
         LaporanPegawai::create([
-            'user_id'               => auth()->user()->id,
-            'pegawai_user_id'       => $request->pegawai_user_id,
             'nama_file'             => $nama_file
         ]);
 
@@ -63,34 +40,22 @@ class LaporanPegawaiController extends Controller
         return redirect()->route('laporan-pegaai.index');
     }
 
-    public function show (LaporanPegawai $laporanPegawai)
+    public function show (LaporanPegawai $laporanPegawai) : JsonResponse
     {
         if (!$laporanPegawai) {
             return response()->json(null, 404);
         }
+
+        return response()->json([
+            'nama_file'  => basename($laporanPegawai->nama_file),
+            'created_at' => $laporanPegawai->created_at ? $laporanPegawai->created_at->format('Y-m-d H:i:s') : '-',
+            'updated_at' => $laporanPegawai->updated_at ? $laporanPegawai->updated_at->format('Y-m-d H:i:s') : '-',
+        ], 200);
     }
 
     public function edit (LaporanPegawai $laporanPegawai) : View
     {
-        $laporanPegawai->load([
-            'user.biodata'           => function ($query) {
-                $query->select('id', 'user_id', 'nama_lengkap', 'jabatan_id', 'nomor_telepon');
-            },
-            'user.biodata.jabatan'   => function ($query) {
-                $query->select('id', 'nama_jabatan');
-            }
-        ]);
-
-        $user = User::with([
-            'biodata'           => function ($query) {
-                $query->select('id', 'user_id', 'nama_lengkap', 'jabatan_id', 'nomor_telepon');
-            },
-            'biodata.jabatan'   => function ($query) {
-                $query->select('id', 'nama_jabatan');
-            }
-        ])->role('pegawai')->latest()->get();
-
-        return view('dashboard.pimpinan.laporan-pegawai.edit', compact('laporanPegawai', 'user'));
+        return view('dashboard.pimpinan.laporan-pegawai.edit', compact('laporanPegawai'));
     }
 
     public function update (LaporanPegawaiRequest $request, LaporanPegawai $laporanPegawai) : RedirectResponse
@@ -105,7 +70,6 @@ class LaporanPegawaiController extends Controller
         }
 
         $laporanPegawai->update([
-            'pegawai_user_id'       => $request->pegawai_user_id,
             'nama_file'             => $nama_file
         ]);
 

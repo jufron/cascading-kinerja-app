@@ -38,6 +38,10 @@ class LaporanController extends Controller
                 $query->select('nama_lengkap', 'jabatan_id', 'bidang', 'pangkat_golongan', 'nomor_telepon');
             },
         ])
+            ->whereHas('dokumentKinerja', function ($query) {
+                $query->where('user_id_pihak_pertama', auth()->user()->id)
+                      ->orWhere('user_id_pihak_kedua', auth()->user()->id);
+            })
             ->where('status', 'disetujui')
             ->latest()
             ->get();
