@@ -124,7 +124,7 @@ class LaporanController extends Controller
         $doctKinerja = $dokumentKinerja->kinerja()->latest()->get();
 
         $pelaksanaanAnggaran = PelaksanaanAnggaran::query()
-                ->whereIn('kinerja_id', $doctKinerja->pluck('id'))
+                ->whereIn('dokument_kinerja_id', $doctKinerja->pluck('id'))
                 ->latest()
                 ->get();
 
