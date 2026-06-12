@@ -60,9 +60,9 @@
                                             >
                                             <i class="fas fa-info-circle"></i>
                                         </button> --}}
-                                        <a href="{{ route('laporan-pegawai.edit', $lp) }}" class="btn btn-warning btn-circle btn-sm">
+                                        {{-- <a href="{{ route('laporan-pegawai.edit', $lp) }}" class="btn btn-warning btn-circle btn-sm">
                                             <i class="fas fa-exclamation-triangle"></i>
-                                        </a>
+                                        </a> --}}
                                         <button type="button" id="banner-delete-button" class="btn btn-danger btn-circle btn-sm">
                                             <i class="fas fa-trash"></i>
                                         </button>
